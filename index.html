@@ -3,143 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GREGARIOUS CLUB</title>
+<title>GREGARIOUS CLUB - Rp 145.000</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@700;900&display=swap" rel="stylesheet">
 <style>
 .serif{font-family:'Instrument Serif',serif}
 .grgs{font-family:'Inter',sans-serif;font-weight:900}
-.logo-oval{border:2.5px solid currentColor;border-radius:50%;padding:6px 22px;display:inline-block;position:relative}
+.logo-oval{border:2.5px solid currentColor;border-radius:50%;padding:7px 24px;display:inline-block;position:relative}
 .logo-oval::before{content:'';position:absolute;inset:3px;border:1px solid currentColor;border-radius:50%;opacity:.8}
-.size-disabled{opacity:.25;pointer-events:none;text-decoration:line-through;position:relative}
-.size-disabled::after{content:'SOLD OUT';position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:7px;background:black;color:white;padding:1px 4px;text-decoration:none}
-.menu-link{font-size:12px;letter-spacing:0.2em;font-weight:700;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.08);display:block}
+.size-disabled{opacity:.25;pointer-events:none;text-decoration:line-through}
+.size-disabled::after{content:'SOLD OUT';position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:7px;background:black;color:white;padding:1px 4px}
 </style>
 </head>
 <body class="bg-white text-black">
+<script>
+// ========== SETTING SIMPLE BOS ==========
+const HARGA = 145000;
+const HARGA_TAMPIL = "Rp 145.000";
+const NO_WA = "62881023595180";
+const REK_BRI = "074901024253504";
+const NAMA_REK = "RIZAL FARUK HAYDAR";
+const STOCK = { BLACK:{S:0,M:0,L:2,XL:0}, WHITE:{S:0,M:3,L:2,XL:1} };
+// CUMA JNE & JNT - SIMPLE!
+const ONGKIR = {
+  "JNE Reguler (2-3 hari)": 15000,
+  "JNE YES (1 hari)": 30000,
+  "J&T REG (2-3 hari)": 14000,
+  "J&T ECO (3-5 hari)": 11000
+};
+// =========================================
+</script>
 
-<!-- HEADER -->
-<header class="bg-white sticky top-0 z-40 flex justify-between items-center px-6 py-3.5 border-b border-black/10">
-<button onclick="openMenu()" class="text-xl">☰</button>
-<div class="logo-oval grgs text-[18px]">GRGS</div>
+<header class="bg-white sticky top-0 z-40 flex justify-between items-center px-6 py-4 border-b">
+<button onclick="openMenu()">☰</button>
+<div class="logo-oval grgs">GRGS</div>
 <button onclick="openCart()" class="relative">🛒 <span id="cartCount" class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden">0</span></button>
 </header>
 
-<!-- MENU DRAWER -->
-<div id="menuDrawer" class="fixed inset-0 z-[100] hidden">
-<div class="absolute inset-0 bg-black/60" onclick="closeMenu()"></div>
-<div class="absolute left-0 top-0 h-full w-[85%] md:w-[380px] bg-white p-8 flex flex-col">
-<div class="flex justify-between items-center mb-10">
-<div class="logo-oval grgs">GRGS</div>
-<button onclick="closeMenu()" class="text-2xl">✕</button>
-</div>
-<nav class="flex-1">
-<a href="#home" onclick="closeMenu()" class="menu-link">01 // BERANDA</a>
-<a href="#shop" onclick="closeMenu()" class="menu-link">02 // PRODUK / SHOP</a>
-<a href="#payment" onclick="closeMenu()" class="menu-link">03 // PEMBAYARAN</a>
-<a href="#shipping" onclick="closeMenu()" class="menu-link">04 // PENGIRIMAN</a>
-<a href="https://wa.me/62881023595180" class="menu-link">05 // KONTAK WA</a>
-</nav>
-<div class="pt-6 border-t">
-<p class="text-[10px] tracking-[0.3em] opacity-40">GREGARIOUS CLUB © 2026<br>BANDUNG // UNITED AS ONE</p>
-</div>
-</div>
-</div>
+<div id="menuDrawer" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="closeMenu()"></div><div class="absolute left-0 top-0 h-full w-[85%] md:w-[350px] bg-white p-8"><div class="flex justify-between mb-8"><div class="logo-oval grgs">GRGS</div><button onclick="closeMenu()">✕</button></div><a href="#home" onclick="closeMenu()" class="block py-3 border-b text-[12px] font-bold tracking-widest">01 BERANDA</a><a href="#shop" onclick="closeMenu()" class="block py-3 border-b text-[12px] font-bold tracking-widest">02 PRODUK 145K</a><a href="#payment" onclick="closeMenu()" class="block py-3 border-b text-[12px] font-bold tracking-widest">03 PEMBAYARAN BRI</a><a href="#shipping" onclick="closeMenu()" class="block py-3 border-b text-[12px] font-bold tracking-widest">04 PENGIRIMAN JNE J&T</a></div></div>
 
-<!-- BERANDA SLOGAN AJA BOS - INI YANG LU MAU -->
-<section id="home" class="relative h-[85vh] bg-black text-white flex items-center justify-center text-center overflow-hidden">
+<section id="home" class="relative h-[88vh] bg-black text-white flex items-center justify-center text-center overflow-hidden">
 <img src="hero.jpg" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000'" class="absolute inset-0 w-full h-full object-cover">
-<div class="absolute inset-0 bg-black/55"></div>
-<div class="relative z-10 px-6 max-w-2xl">
-<div class="logo-oval grgs text-[22px] mb-6 text-white">GRGS</div>
-<h1 class="serif text-[58px] md:text-[86px] leading-[0.85] tracking-tight">UNITED<br>AS ONE</h1>
-<p class="serif italic text-[16px] md:text-[18px] mt-5 opacity-80">We're not just a brand.<br>We're a community.</p>
-<p class="text-[10px] tracking-[0.4em] mt-8 opacity-50">GREGARIOUS CLUB // BANDUNG 2026</p>
-<a href="#shop" class="mt-10 inline-block bg-white text-black px-14 py-4 rounded-full text-[11px] font-bold tracking-[0.25em] hover:bg-black hover:text-white border border-white transition">SHOP NOW</a>
-</div>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="relative z-10 px-6"><div class="logo-oval grgs text-[22px] mb-6 border-white text-white">GRGS</div><p class="text-[11px] tracking-[0.35em]">GREGARIOUS CLUB</p><p class="serif italic text-[13px] mt-2 opacity-70">We're not just a brand.<br>We're a community.</p><h1 class="serif text-[56px] leading-[0.9] mt-6">UNITED<br>AS ONE</h1><div class="mt-4 bg-white text-black inline-block px-4 py-1 text-[11px] font-bold">Rp 145.000</div><br><a href="#shop" class="mt-8 inline-block border border-white px-12 py-4 rounded-full text-[12px] font-bold tracking-widest">SHOP NOW</a></div>
 </section>
 
-<!-- PRODUK - ORANG TINGGAL MILIH DISINI -->
-<section id="shop" class="px-4 py-14 max-w-6xl mx-auto">
-<div class="text-center mb-10">
-<h2 class="serif text-[32px]">SHOP COLLECTION</h2>
-<p class="text-[11px] tracking-[0.3em] opacity-50 mt-2">PILIH PRODUK // FINAL STOCK</p>
-</div>
+<section id="shop" class="px-4 py-12 max-w-5xl mx-auto">
+<h2 class="serif text-[28px] text-center mb-8">SHOP - Rp 145.000</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- BLACK -->
-<div class="border border-black/10 group">
-<div class="aspect-[4/5] bg-[#f6f6f6] relative overflow-hidden">
-<img src="cross_black.jpg" class="w-full h-full object-contain p-5 group-hover:scale-105 transition duration-500">
-<div class="absolute top-3 left-3 bg-red-600 text-white text-[9px] px-2 py-1 tracking-widest">ONLY L=2 LEFT!</div>
-</div>
-<div class="p-4">
-<h3 class="font-bold text-[14px]">CROSS TSHIRT - BLACK</h3>
-<p class="text-[11px] opacity-60 mt-1">Sisa: L=2 pcs | S M XL Sold Out</p>
-<p class="font-bold mt-2">Rp 145.000</p>
-<div class="flex gap-2 mt-3" id="sizes-BLACK"></div>
-<p class="text-[10px] mt-2 h-4" id="stockInfo-BLACK"></p>
-<button id="btn-BLACK" onclick="addToCart('BLACK')" class="mt-3 w-full bg-black text-white py-3 text-[11px] font-bold tracking-[0.2em]">ADD TO CART</button>
-</div>
-</div>
-<!-- WHITE -->
-<div class="border border-black/10 group">
-<div class="aspect-[4/5] bg-[#f6f6f6] relative overflow-hidden">
-<img src="cross_white.jpg" class="w-full h-full object-contain p-5 group-hover:scale-105 transition duration-500">
-<div class="absolute top-3 left-3 bg-black text-white text-[9px] px-2 py-1 tracking-widest">LOW STOCK</div>
-</div>
-<div class="p-4">
-<h3 class="font-bold text-[14px]">CROSS TSHIRT - WHITE</h3>
-<p class="text-[11px] opacity-60 mt-1">Sisa: M=3 L=2 XL=1 | S Sold Out</p>
-<p class="font-bold mt-2">Rp 145.000</p>
-<div class="flex gap-2 mt-3" id="sizes-WHITE"></div>
-<p class="text-[10px] mt-2 h-4" id="stockInfo-WHITE"></p>
-<button id="btn-WHITE" onclick="addToCart('WHITE')" class="mt-3 w-full bg-black text-white py-3 text-[11px] font-bold tracking-[0.2em]">ADD TO CART</button>
-</div>
-</div>
+<div class="border"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_black.jpg" class="w-full h-full object-contain p-6"></div><div class="p-4"><h3 class="font-bold text-[13px]">CROSS - BLACK - Rp 145.000</h3><div class="flex gap-2 mt-3" id="sizes-BLACK"></div><p id="stockInfo-BLACK" class="text-[10px] mt-2 h-4"></p><button id="btn-BLACK" onclick="addToCart('BLACK')" class="mt-3 w-full bg-black text-white py-3 text-[11px] font-bold">ADD TO CART</button></div></div>
+<div class="border"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_white.jpg" class="w-full h-full object-contain p-6"></div><div class="p-4"><h3 class="font-bold text-[13px]">CROSS - WHITE - Rp 145.000</h3><div class="flex gap-2 mt-3" id="sizes-WHITE"></div><p id="stockInfo-WHITE" class="text-[10px] mt-2 h-4"></p><button id="btn-WHITE" onclick="addToCart('WHITE')" class="mt-3 w-full bg-black text-white py-3 text-[11px] font-bold">ADD TO CART</button></div></div>
 </div>
 </section>
 
-<!-- PEMBAYARAN -->
-<section id="payment" class="bg-[#f8f8f8] px-6 py-12">
-<div class="max-w-6xl mx-auto">
-<h2 class="serif text-[24px] mb-6">PEMBAYARAN // BRI</h2>
-<div class="grid md:grid-cols-3 gap-4">
-<div class="bg-white border-2 border-black p-5">
-<h3 class="font-bold text-[12px] tracking-widest">TRANSFER BRI</h3>
-<p class="text-[12px] mt-2">074901024253504<br>An. RIZAL FARUK HAYDAR</p>
-<p class="text-[10px] opacity-50 mt-2">Kirim bukti ke WA</p>
-</div>
-<div class="bg-white border p-5"><h3 class="font-bold text-[12px]">QRIS / E-WALLET</h3><p class="text-[11px] opacity-60 mt-2">GoPay, OVO, Dana, ShopeePay</p></div>
-<div class="bg-white border p-5"><h3 class="font-bold text-[12px]">COD BANDUNG</h3><p class="text-[11px] opacity-60 mt-2">Cibiru - Ujung Berung free ongkir min 2 pcs</p></div>
-</div>
+<section id="payment" class="bg-[#f8f8f8] px-6 py-10 max-w-5xl mx-auto">
+<h2 class="serif text-[22px]">PEMBAYARAN</h2>
+<div class="grid md:grid-cols-2 gap-4 mt-6">
+<div class="border-2 border-black p-5 bg-white"><h3 class="font-bold">TRANSFER BRI</h3><p class="font-mono bg-black text-white p-3 mt-3 text-[13px]">074901024253504<br>An. RIZAL FARUK HAYDAR</p><p class="text-[11px] mt-2">Transfer total = 145K + ongkir</p></div>
+<div class="border p-5 bg-white"><h3 class="font-bold">QRIS E-WALLET</h3><p class="text-[11px] mt-3">GoPay, OVO, Dana, ShopeePay<br>Scan QR dari admin via WA</p></div>
 </div>
 </section>
 
-<!-- PENGIRIMAN -->
-<section id="shipping" class="px-6 py-12 max-w-6xl mx-auto">
-<h2 class="serif text-[24px] mb-6">PENGIRIMAN</h2>
-<div class="grid md:grid-cols-2 gap-6 text-[12px]">
-<div class="space-y-2"><div class="flex justify-between border-b py-2"><span>JNE Reguler</span><b>Rp 15-25rb</b></div><div class="flex justify-between border-b py-2"><span>J&T Express</span><b>Rp 18-28rb</b></div><div class="flex justify-between border-b py-2"><span>Gojek Instant Bandung</span><b>Rp 10-20rb</b></div></div>
-<div class="bg-black text-white p-5"><p>• Order sebelum 15:00 kirim hari sama<br>• Resi via WA<br>• Free sticker GRGS<br>• Bandung bisa COD</p><a href="https://wa.me/62881023595180?text=Cek%20ongkir%20dong" class="mt-4 inline-block border border-white px-5 py-2 text-[10px] tracking-widest">CEK ONGKIR</a></div>
-</div>
+<section id="shipping" class="bg-black text-white px-6 py-10">
+<div class="max-w-5xl mx-auto"><h2 class="serif text-[22px]">PENGIRIMAN - JNE & J&T ONLY</h2><p class="text-[10px] opacity-50 mt-2">ONGKIR DITANGGUNG PEMBELI - OTOMATIS DI CART</p>
+<div class="grid md:grid-cols-2 gap-8 mt-6">
+<div id="ongkirList" class="space-y-0"></div>
+<div class="bg-white text-black p-5"><h3 class="font-bold text-[11px]">CARA HITUNG</h3><p class="text-[12px] mt-3 leading-relaxed">Contoh:<br>1 pcs = Rp 145.000<br>+ JNE Reg 15.000<br><b>= Total Transfer Rp 160.000</b><br><br>2 pcs = Rp 290.000 + 15.000 = Rp 305.000<br><br>Kirim setiap hari jam 15:00<br>Resi via WA jam 18:00</p></div>
+</div></div>
 </section>
 
-<!-- CART & CHECKOUT -->
-<div id="cartDrawer" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="closeCart()"></div><div class="absolute right-0 top-0 h-full w-[88%] md:w-[400px] bg-white p-6 flex flex-col"><div class="flex justify-between border-b pb-4"><h3 class="font-bold text-sm">CART (<span id="cartCountText">0</span>)</h3><button onclick="closeCart()">✕</button></div><div id="cartItems" class="flex-1 py-4 overflow-auto"></div><div class="border-t pt-4"><div class="flex justify-between font-bold mb-4"><span>Total</span><span id="cartTotal">Rp 0</span></div><button onclick="openCheckout()" class="w-full bg-black text-white py-4 text-xs font-bold">CHECKOUT</button></div></div></div>
-<div id="checkoutModal" class="fixed inset-0 z-[110] hidden"><div class="absolute inset-0 bg-black/70" onclick="closeCheckout()"></div><div class="absolute bottom-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white w-full md:w-[420px] p-6"><h3 class="serif text-[22px] mb-4">CHECKOUT</h3><input id="custName" placeholder="Nama" class="w-full border p-3 mb-2 text-sm"><input id="custWa" placeholder="WA 08xx" class="w-full border p-3 mb-2 text-sm"><input id="custAddr" placeholder="Alamat" class="w-full border p-3 mb-3 text-sm"><div class="grid grid-cols-2 gap-2 mb-3"><select id="payMethod" class="border p-3 text-xs"><option>Transfer BRI - 074901024253504</option><option>QRIS</option><option>COD Bandung</option></select><select id="shipMethod" class="border p-3 text-xs"><option>JNE</option><option>J&T</option><option>Gojek Instant</option><option>COD</option></select></div><div id="checkoutSummary" class="bg-gray-50 p-3 text-xs mb-4"></div><button onclick="placeOrder()" class="w-full bg-black text-white py-4 font-bold text-xs tracking-widest">PESAN SEKARANG</button></div></div>
+<div id="cartDrawer" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="closeCart()"></div><div class="absolute right-0 top-0 h-full w-[88%] md:w-[400px] bg-white p-6 flex flex-col"><div class="flex justify-between border-b pb-4"><h3 class="font-bold text-sm">CART (<span id="cartCountText">0</span>)</h3><button onclick="closeCart()">✕</button></div><div id="cartItems" class="flex-1 py-4 overflow-auto"></div><div class="border-t pt-4"><div class="flex justify-between text-[12px]"><span>Subtotal</span><span id="subtotalText">Rp 0</span></div><div class="flex justify-between text-[12px] mt-1"><span>Ongkir</span><span id="ongkirText">Rp 0</span></div><div class="flex justify-between font-bold text-[16px] mt-3 pt-3 border-t"><span>TOTAL</span><span id="cartTotal">Rp 0</span></div><button onclick="openCheckout()" class="w-full bg-black text-white py-4 text-xs font-bold mt-4">CHECKOUT</button></div></div></div>
 
-<footer class="bg-black text-white/30 py-8 text-center text-[10px] tracking-[0.3em]">GREGARIOUS CLUB © 2026 // UNITED AS ONE</footer>
+<div id="checkoutModal" class="fixed inset-0 z-[110] hidden"><div class="absolute inset-0 bg-black/70" onclick="closeCheckout()"></div><div class="absolute bottom-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white w-full md:w-[440px] p-6"><h3 class="serif text-[22px]">CHECKOUT 145K+ONGKIR</h3><input id="custName" placeholder="Nama Lengkap *" class="w-full border p-3 mb-2 text-sm mt-4"><input id="custWa" placeholder="WA 08xx *" class="w-full border p-3 mb-2 text-sm"><textarea id="custAddr" placeholder="Alamat Lengkap + Kec + Kota + Kode Pos *" class="w-full border p-3 mb-3 text-sm h-[70px]"></textarea><div class="grid grid-cols-2 gap-2 mb-3"><select id="payMethod" class="w-full border p-3 text-xs"><option>Transfer BRI - 074901024253504</option><option>QRIS GoPay/OVO/Dana</option></select><select id="shipMethod" onchange="updateCart()" class="w-full border p-3 text-xs"></select></div><div id="checkoutSummary" class="bg-gray-100 p-3 text-xs mb-4"></div><button onclick="placeOrder()" class="w-full bg-black text-white py-4 font-bold text-xs">PESAN VIA WA</button></div></div>
+
+<footer class="bg-black text-white/40 py-6 text-center text-[10px] tracking-widest">GREGARIOUS CLUB © 2026 - Rp 145.000<br>BRI 074901024253504 An. RIZAL FARUK HAYDAR</footer>
 
 <script>
-const STOCK={BLACK:{S:0,M:0,L:2,XL:0},WHITE:{S:0,M:3,L:2,XL:1}}; let selected={BLACK:null,WHITE:null}; let cart=[];
-function openMenu(){document.getElementById('menuDrawer').classList.remove('hidden')} function closeMenu(){document.getElementById('menuDrawer').classList.add('hidden')}
-function renderSizes(){['BLACK','WHITE'].forEach(color=>{const cont=document.getElementById('sizes-'+color);cont.innerHTML='';Object.keys(STOCK[color]).forEach(size=>{const qty=STOCK[color][size];const btn=document.createElement('button');btn.innerText=size;btn.className='border px-4 py-2 text-[12px] font-bold '+(qty===0?'size-disabled':'hover:bg-black hover:text-white');if(qty===0)btn.disabled=true;btn.onclick=()=>{if(qty===0)return;selected[color]=size;document.querySelectorAll('#sizes-'+color+' button').forEach(b=>b.classList.remove('bg-black','text-white'));btn.classList.add('bg-black','text-white');const info=document.getElementById('stockInfo-'+color);info.innerText=qty<=2?'⚠️ Sisa '+qty+' pcs!':'✓ Ready '+qty;info.className='text-[10px] mt-2 h-4 '+(qty<=2?'text-red-600 font-bold':'text-green-600')};cont.appendChild(btn)});const first=Object.keys(STOCK[color]).find(s=>STOCK[color][s]>0);if(first){selected[color]=first;setTimeout(()=>{document.querySelectorAll('#sizes-'+color+' button').forEach(b=>{if(b.innerText===first)b.click()})},100)}else{document.getElementById('btn-'+color).innerText='SOLD OUT';document.getElementById('btn-'+color).disabled=true}})}
-function addToCart(color){const size=selected[color];if(!size){alert('Pilih size!');return}if(STOCK[color][size]<=0){alert('Habis!');return}const count=cart.filter(i=>i.color===color&&i.size===size).length;if(count>=STOCK[color][size]){alert('Stok '+size+' cuma '+STOCK[color][size]+' pcs!');return}cart.push({name:'CROSS '+color+' Size '+size,price:259000,color,size});STOCK[color][size]--;updateCart();openCart();renderSizes();}
-function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartCount').classList.toggle('hidden',cart.length==0);document.getElementById('cartCountText').innerText=cart.length;let total=cart.reduce((a,b)=>a+b.price,0);document.getElementById('cartTotal').innerText='Rp '+total.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map((i,idx)=>`<div class="flex justify-between border-b py-2 text-sm"><span>${i.color} ${i.size}</span><span>Rp ${i.price.toLocaleString('id-ID')} <button onclick="removeItem(${idx})" class="opacity-30 ml-2">✕</button></span></div>`).join('')||'<p class="text-center py-10 opacity-40 text-sm">Kosong bos!</p>';const pay=document.getElementById('payMethod')?.value||'BRI';const ship=document.getElementById('shipMethod')?.value||'JNE';document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`• ${i.color} Size ${i.size}`).join('<br>')+`<br><br><b>Total: Rp ${total.toLocaleString('id-ID')}</b><br>${pay}<br>${ship}`;}
-function removeItem(idx){const item=cart[idx];STOCK[item.color][item.size]++;cart.splice(idx,1);updateCart();renderSizes();}
-function openCart(){document.getElementById('cartDrawer').classList.remove('hidden')} function closeCart(){document.getElementById('cartDrawer').classList.add('hidden')}
-function openCheckout(){if(cart.length==0)return;closeCart();document.getElementById('checkoutModal').classList.remove('hidden');updateCart()} function closeCheckout(){document.getElementById('checkoutModal').classList.add('hidden')}
-function placeOrder(){let n=document.getElementById('custName').value;let w=document.getElementById('custWa').value;let a=document.getElementById('custAddr').value;let pay=document.getElementById('payMethod').value;let ship=document.getElementById('shipMethod').value;if(!n||!w){alert('Isi nama & WA!');return}let t=cart.reduce((a,b)=>a+b.price,0);let txt=`ORDER GRGS:%0A${cart.map(i=>`- ${i.color} Size ${i.size}`).join('%0A')}%0ANama:${n}%0AWA:${w}%0AAlamat:${a}%0ABayar:${pay}%0AKirim:${ship}%0ATotal:Rp ${t.toLocaleString('id-ID')}%0ABRI 074901024253504 An RIZAL FARUK HAYDAR`;window.open('https://wa.me/62881023595180?text='+txt,'_blank');cart=[];updateCart();closeCheckout();} renderSizes();
+const shipSel=document.getElementById('shipMethod'); const ongkirCont=document.getElementById('ongkirList');
+Object.entries(ONGKIR).forEach(([n,h])=>{const r=document.createElement('div');r.className="flex justify-between border-b border-white/10 py-3 text-[12px]";r.innerHTML=`<span>${n}</span><b>Rp ${h.toLocaleString('id-ID')}</b>`;ongkirCont.appendChild(r);const o=document.createElement('option');o.value=n;o.innerText=`${n} - Rp ${h.toLocaleString('id-ID')}`;shipSel.appendChild(o);});
+function getOngkir(){let s=document.getElementById('shipMethod')?.value||Object.keys(ONGKIR)[0];let k=Object.keys(ONGKIR).find(k=>s.includes(k))||Object.keys(ONGKIR)[0];return ONGKIR[k]||0;}
+let selected={BLACK:null,WHITE:null}; let cart=[];
+function openMenu(){document.getElementById('menuDrawer').classList.remove('hidden')}function closeMenu(){document.getElementById('menuDrawer').classList.add('hidden')}
+function renderSizes(){['BLACK','WHITE'].forEach(c=>{const cont=document.getElementById('sizes-'+c);cont.innerHTML='';Object.keys(STOCK[c]).forEach(s=>{const q=STOCK[c][s];const b=document.createElement('button');b.innerText=s;b.className='border px-4 py-2 text-[12px] font-bold '+(q==0?'size-disabled':'');if(q==0)b.disabled=true;b.onclick=()=>{if(q==0)return;selected[c]=s;document.querySelectorAll('#sizes-'+c+' button').forEach(x=>x.classList.remove('bg-black','text-white'));b.classList.add('bg-black','text-white');document.getElementById('stockInfo-'+c).innerText=q<=2?'Sisa '+q+' pcs!':'Ready '+q;};cont.appendChild(b);});const f=Object.keys(STOCK[c]).find(s=>STOCK[c][s]>0);if(f){selected[c]=f;setTimeout(()=>{document.querySelectorAll('#sizes-'+c+' button').forEach(b=>{if(b.innerText==f)b.click()})},100)}else{document.getElementById('btn-'+c).innerText='SOLD OUT';document.getElementById('btn-'+c).disabled=true;}})}
+function addToCart(c){const s=selected[c];if(!s)return alert('Pilih size!');if(STOCK[c][s]<=0)return alert('Habis!');if(cart.filter(i=>i.color==c&&i.size==s).length>=STOCK[c][s])return alert('Stok cuma '+STOCK[c][s]);cart.push({price:HARGA,color:c,size:s});STOCK[c][s]--;updateCart();openCart();renderSizes();}
+function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartCount').classList.toggle('hidden',cart.length==0);document.getElementById('cartCountText').innerText=cart.length;let sub=cart.reduce((a,b)=>a+b.price,0);let ong=cart.length>0?getOngkir():0;let tot=sub+ong;document.getElementById('subtotalText').innerText='Rp '+sub.toLocaleString('id-ID');document.getElementById('ongkirText').innerText='Rp '+ong.toLocaleString('id-ID');document.getElementById('cartTotal').innerText='Rp '+tot.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map((i,idx)=>`<div class="flex justify-between border-b py-3 text-sm"><span>${i.color} ${i.size}</span><span>Rp ${i.price.toLocaleString('id-ID')} <button onclick="removeItem(${idx})">✕</button></span></div>`).join('')||'<p class="text-center py-10 opacity-40 text-sm">Kosong</p>';const ship=document.getElementById('shipMethod').value;const pay=document.getElementById('payMethod').value;document.getElementById('checkoutSummary').innerHTML=`${cart.map(i=>`• ${i.color} ${i.size} - Rp 145.000`).join('<br>')}<br><br>Subtotal: Rp ${sub.toLocaleString('id-ID')}<br>Ongkir ${ship}: Rp ${ong.toLocaleString('id-ID')}<br><br><b>TOTAL: Rp ${tot.toLocaleString('id-ID')}</b><br>Bayar: ${pay}`;}
+function removeItem(i){STOCK[cart[i].color][cart[i].size]++;cart.splice(i,1);updateCart();renderSizes();}
+function openCart(){document.getElementById('cartDrawer').classList.remove('hidden')}function closeCart(){document.getElementById('cartDrawer').classList.add('hidden')}
+function openCheckout(){if(cart.length==0)return;closeCart();document.getElementById('checkoutModal').classList.remove('hidden');updateCart()}function closeCheckout(){document.getElementById('checkoutModal').classList.add('hidden')}
+function placeOrder(){let n=document.getElementById('custName').value;let w=document.getElementById('custWa').value;let a=document.getElementById('custAddr').value;if(!n||!w||!a)return alert('Isi data!');let sub=cart.reduce((a,b)=>a+b.price,0);let ong=getOngkir();let tot=sub+ong;let ship=document.getElementById('shipMethod').value;let pay=document.getElementById('payMethod').value;let txt=`ORDER GRGS 145K%0A${cart.map(i=>`- ${i.color} Size ${i.size} Rp 145.000`).join('%0A')}%0A%0ASubtotal: Rp ${sub.toLocaleString('id-ID')}%0AOngkir ${ship}: Rp ${ong.toLocaleString('id-ID')}%0ATOTAL: Rp ${tot.toLocaleString('id-ID')}%0A%0ANama: ${n}%0AWA: ${w}%0AAlamat: ${a}%0A%0ABayar: ${pay}%0AKirim: ${ship}%0ABRI ${REK_BRI} An. ${NAMA_REK}`;window.open(`https://wa.me/${NO_WA}?text=${txt}`,'_blank');cart=[];updateCart();closeCheckout();}renderSizes();
 </script>
 </body>
 </html>
