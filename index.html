@@ -12,6 +12,8 @@
 .grgs{font-family:'Inter',sans-serif;font-weight:900}
 .logo-oval{border:2.5px solid currentColor;border-radius:50%;padding:7px 24px;display:inline-block}
 .product-card{transition:.4s}.product-card:hover{transform:translateY(-4px);box-shadow:0 15px 30px rgba(0,0,0,.12)}
+.marquee{animation:marquee 20s linear infinite; display:inline-flex; white-space:nowrap}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body class="bg-white text-black">
@@ -26,7 +28,14 @@ const PRODUCTS={
 const ONGKIR={"JNE Reguler 2-3 hari":15000,"JNE YES 1 hari":30000,"J&T REG 2-3 hari":14000,"J&T ECO 3-5 hari":11000};
 </script>
 
-<div class="bg-black text-white py-2 text-center text-[10px] tracking-[0.25em] font-bold">FREE STICKER PACK SETIAP PEMBELIAN • BANDUNG 40614 • ORDER SEBELUM 15:00 KIRIM HARI SAMA</div>
+<!-- RUNNING TEXT JALAN - UDAH BALIK! -->
+<div class="bg-black text-white py-2.5 overflow-hidden whitespace-nowrap relative z-50">
+<div class="marquee text-[11px] tracking-[0.25em] font-bold">
+<span class="mx-10">✦ FREE STICKER PACK SETIAP PEMBELIAN ✦ BANDUNG 40614 ✦ ORDER SEBELUM 15:00 KIRIM HARI SAMA ✦ NEW DROP BABYTEE RHINESTONE 135K ✦ </span>
+<span class="mx-10">✦ FREE STICKER PACK SETIAP PEMBELIAN ✦ BANDUNG 40614 ✦ ORDER SEBELUM 15:00 KIRIM HARI SAMA ✦ NEW DROP BABYTEE RHINESTONE 135K ✦ </span>
+<span class="mx-10">✦ FREE STICKER PACK SETIAP PEMBELIAN ✦ BANDUNG 40614 ✦ ORDER SEBELUM 15:00 KIRIM HARI SAMA ✦ NEW DROP BABYTEE RHINESTONE 135K ✦ </span>
+</div>
+</div>
 
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b flex justify-between items-center px-6 py-4">
 <button onclick="document.getElementById('menu').classList.remove('hidden')">☰</button>
@@ -36,7 +45,6 @@ const ONGKIR={"JNE Reguler 2-3 hari":15000,"JNE YES 1 hari":30000,"J&T REG 2-3 h
 
 <div id="menu" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute left-0 top-0 h-full w-[85%] bg-white p-8"><button onclick="document.getElementById('menu').classList.add('hidden')" class="mb-8 font-bold text-[11px]">✕ CLOSE</button><a href="#home" onclick="document.getElementById('menu').classList.add('hidden')" class="block bebas text-[36px] border-b py-3">BERANDA</a><a href="#shop" onclick="document.getElementById('menu').classList.add('hidden')" class="block bebas text-[36px] border-b py-3">SHOP</a><p class="mt-10 text-[10px] opacity-50">BRI 074901024253504 An. RIZAL FARUK HAYDAR</p></div></div>
 
-<!-- BERANDA BIASA LAGI - KAYA AWAL - TANPA HARGA - UNITED AS ONE -->
 <section id="home" class="relative h-[88vh] bg-black text-white flex items-center justify-center text-center overflow-hidden">
 <img src="hero.jpg" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000'" class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-black/50"></div>
@@ -45,38 +53,17 @@ const ONGKIR={"JNE Reguler 2-3 hari":15000,"JNE YES 1 hari":30000,"J&T REG 2-3 h
 <p class="text-[11px] tracking-[0.35em]">GREGARIOUS CLUB</p>
 <p class="serif italic text-[13px] mt-2 opacity-70">We're not just a brand.<br>We're a community.</p>
 <h1 class="serif text-[56px] leading-[0.9] mt-6">UNITED<br>AS ONE</h1>
-<a href="#shop" class="mt-10 inline-block border border-white px-12 py-4 rounded-full text-[12px] font-bold tracking-widest hover:bg-white hover:text-black transition">SHOP NOW</a>
+<a href="#shop" class="mt-10 inline-block border border-white px-12 py-4 rounded-full text-[12px] font-bold tracking-widest">SHOP NOW</a>
 </div>
 </section>
 
-<!-- SHOP - SEMUA PRODUK ADA -->
 <section id="shop" class="max-w-[1300px] mx-auto px-4 py-12">
-<div class="text-center mb-10">
-<h2 class="bebas text-[44px]">SHOP COLLECTION</h2>
-<p class="text-[11px] tracking-widest opacity-50">CROSS 145K • BABYTEE RHINESTONE 135K • + ONGKIR JNE J&T</p>
-</div>
-
+<div class="text-center mb-10"><h2 class="bebas text-[44px]">SHOP COLLECTION</h2><p class="text-[11px] tracking-widest opacity-50">CROSS 145K • BABYTEE RHINESTONE 135K • + ONGKIR JNE J&T</p></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- BABYTEE BLACK -->
-<div class="product-card border rounded-[16px] overflow-hidden bg-white">
-<div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_black.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full">NEW 💎</span></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE BLACK</h4><p class="text-[11px] opacity-50">Pink glitter rhinestone • Crop fit</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_BLACK"></div><button onclick="addToCart('BABY_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div>
-</div>
-<!-- BABYTEE WHITE -->
-<div class="product-card border rounded-[16px] overflow-hidden bg-white">
-<div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_white.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-white border text-black text-[9px] px-3 py-1 rounded-full">NEW</span></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE WHITE</h4><p class="text-[11px] opacity-50">Pink glitter rhinestone • Crop fit</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_WHITE"></div><button onclick="addToCart('BABY_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div>
-</div>
-<!-- CROSS BLACK -->
-<div class="product-card border rounded-[16px] overflow-hidden bg-white">
-<div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_black.jpg" class="w-full h-full object-contain p-6"></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT BLACK</h4><p class="text-[11px] opacity-50">Oversized • Final 2 pcs</p><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_BLACK"></div><button onclick="addToCart('CROSS_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div>
-</div>
-<!-- CROSS WHITE -->
-<div class="product-card border rounded-[16px] overflow-hidden bg-white">
-<div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_white.jpg" class="w-full h-full object-contain p-6"></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT WHITE</h4><p class="text-[11px] opacity-50">Oversized</p><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_WHITE"></div><button onclick="addToCart('CROSS_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div>
-</div>
+<div class="product-card border rounded-[16px] overflow-hidden bg-white"><div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_black.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full">NEW 💎</span></div><div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE BLACK</h4><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_BLACK"></div><button onclick="addToCart('BABY_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div></div>
+<div class="product-card border rounded-[16px] overflow-hidden bg-white"><div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_white.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-white border text-black text-[9px] px-3 py-1 rounded-full">NEW</span></div><div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE WHITE</h4><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_WHITE"></div><button onclick="addToCart('BABY_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div></div>
+<div class="product-card border rounded-[16px] overflow-hidden bg-white"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_black.jpg" class="w-full h-full object-contain p-6"></div><div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT BLACK</h4><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_BLACK"></div><button onclick="addToCart('CROSS_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div></div>
+<div class="product-card border rounded-[16px] overflow-hidden bg-white"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_white.jpg" class="w-full h-full object-contain p-6"></div><div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT WHITE</h4><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_WHITE"></div><button onclick="addToCart('CROSS_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div></div>
 </div>
 </section>
 
