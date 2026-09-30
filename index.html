@@ -3,92 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GREGARIOUS CLUB - BABYTEE RHINESTONE DROP</title>
+<title>GREGARIOUS CLUB</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
+.serif{font-family:'Instrument Serif',serif}
 .bebas{font-family:'Bebas Neue',sans-serif}
 .grgs{font-family:'Inter',sans-serif;font-weight:900}
 .logo-oval{border:2.5px solid currentColor;border-radius:50%;padding:7px 24px;display:inline-block}
-.product-card{transition:all.4s}.product-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.15)}
+.product-card{transition:.4s}.product-card:hover{transform:translateY(-4px);box-shadow:0 15px 30px rgba(0,0,0,.12)}
 </style>
 </head>
 <body class="bg-white text-black">
-
 <script>
-const NO_WA = "62881023595180";
-const REK_BRI = "074901024253504";
-const PRODUCTS = {
-  CROSS_BLACK: {name:"CROSS TSHIRT - BLACK", price:145000, img:"cross_black.jpg", stock:{S:0,M:0,L:2,XL:0}},
-  CROSS_WHITE: {name:"CROSS TSHIRT - WHITE", price:145000, img:"cross_white.jpg", stock:{S:0,M:3,L:2,XL:1}},
-  BABY_BLACK: {name:"BABYTEE RHINESTONE - BLACK", price:135000, img:"babytee_black.jpg", badge:"NEW DROP 💎", stock:{S:2,M:2,L:2,XL:1}},
-  BABY_WHITE: {name:"BABYTEE RHINESTONE - WHITE", price:135000, img:"babytee_white.jpg", badge:"BEST SELLER PINK", stock:{S:0,M:4,L:2,XL:1}}
+const NO_WA="62881023595180",REK_BRI="074901024253504";
+const PRODUCTS={
+  CROSS_BLACK:{name:"CROSS TSHIRT - BLACK",price:145000,img:"cross_black.jpg",stock:{S:0,M:0,L:2,XL:0}},
+  CROSS_WHITE:{name:"CROSS TSHIRT - WHITE",price:145000,img:"cross_white.jpg",stock:{S:0,M:3,L:2,XL:1}},
+  BABY_BLACK:{name:"BABYTEE RHINESTONE - BLACK",price:135000,img:"babytee_black.jpg",stock:{S:5,M:5,L:5,XL:0}},
+  BABY_WHITE:{name:"BABYTEE RHINESTONE - WHITE",price:135000,img:"babytee_white.jpg",stock:{S:5,M:5,L:5,XL:0}}
 };
-const ONGKIR = {"JNE Reguler 2-3 hari":15000,"JNE YES 1 hari":30000,"J&T REG 2-3 hari":14000,"J&T ECO 3-5 hari":11000};
+const ONGKIR={"JNE Reguler 2-3 hari":15000,"JNE YES 1 hari":30000,"J&T REG 2-3 hari":14000,"J&T ECO 3-5 hari":11000};
 </script>
 
-<div class="bg-black text-white py-2.5 overflow-hidden whitespace-nowrap text-[11px] tracking-widest font-bold text-center">
-✦ NEW DROP: BABYTEE RHINESTONE BLACK & WHITE - 135K ONLY ✦ LIMITED STOCK ✦
-</div>
+<div class="bg-black text-white py-2 text-center text-[10px] tracking-[0.25em] font-bold">FREE STICKER PACK SETIAP PEMBELIAN • BANDUNG 40614 • ORDER SEBELUM 15:00 KIRIM HARI SAMA</div>
 
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b flex justify-between items-center px-6 py-4">
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b flex justify-between items-center px-6 py-4">
 <button onclick="document.getElementById('menu').classList.remove('hidden')">☰</button>
 <div class="logo-oval grgs">GRGS</div>
 <button onclick="document.getElementById('cart').classList.remove('hidden')" class="border border-black px-5 py-2 rounded-full text-[11px] font-bold">CART <span id="cartCount">0</span></button>
 </header>
 
-<div id="menu" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute left-0 top-0 h-full w-[85%] bg-white p-8"><button onclick="document.getElementById('menu').classList.add('hidden')" class="mb-8">✕ CLOSE</button><a href="#shop" class="block bebas text-[40px] border-b py-3">SHOP ALL</a><a href="#babytee" class="block bebas text-[40px] border-b py-3">BABYTEE RHINESTONE</a><p class="mt-10 text-[10px] opacity-50">BRI 074901024253504<br>An. RIZAL FARUK HAYDAR</p></div></div>
+<div id="menu" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute left-0 top-0 h-full w-[85%] bg-white p-8"><button onclick="document.getElementById('menu').classList.add('hidden')" class="mb-8 font-bold text-[11px]">✕ CLOSE</button><a href="#home" onclick="document.getElementById('menu').classList.add('hidden')" class="block bebas text-[36px] border-b py-3">BERANDA</a><a href="#shop" onclick="document.getElementById('menu').classList.add('hidden')" class="block bebas text-[36px] border-b py-3">SHOP</a><p class="mt-10 text-[10px] opacity-50">BRI 074901024253504 An. RIZAL FARUK HAYDAR</p></div></div>
 
-<section class="relative h-[88vh] bg-[#f5f5f5] flex items-center justify-center text-center overflow-hidden">
-<img src="babytee_black.jpg" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000'" class="absolute inset-0 w-full h-full object-cover opacity-20">
+<!-- BERANDA BIASA LAGI - KAYA AWAL - TANPA HARGA - UNITED AS ONE -->
+<section id="home" class="relative h-[88vh] bg-black text-white flex items-center justify-center text-center overflow-hidden">
+<img src="hero.jpg" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000'" class="absolute inset-0 w-full h-full object-cover">
+<div class="absolute inset-0 bg-black/50"></div>
 <div class="relative z-10 px-6">
-<div class="logo-oval grgs mb-6">GRGS</div>
-<h1 class="bebas text-[70px] leading-[0.9]">BABYTEE<br>RHINESTONE</h1>
-<p class="italic text-[14px] opacity-60 mt-2">Gregarious pink rhinestone • crop babytee</p>
-<div class="mt-6 inline-flex gap-2"><span class="bg-black text-white px-4 py-2 rounded-full text-[11px] font-bold">BLACK • 135K</span><span class="bg-white border border-black px-4 py-2 rounded-full text-[11px] font-bold">WHITE • 135K</span></div>
-<br><a href="#babytee" class="mt-8 inline-block bg-black text-white px-12 py-4 rounded-full text-[11px] font-bold tracking-widest">SHOP BABYTEE →</a>
+<div class="logo-oval grgs text-[22px] mb-6 border-white text-white">GRGS</div>
+<p class="text-[11px] tracking-[0.35em]">GREGARIOUS CLUB</p>
+<p class="serif italic text-[13px] mt-2 opacity-70">We're not just a brand.<br>We're a community.</p>
+<h1 class="serif text-[56px] leading-[0.9] mt-6">UNITED<br>AS ONE</h1>
+<a href="#shop" class="mt-10 inline-block border border-white px-12 py-4 rounded-full text-[12px] font-bold tracking-widest hover:bg-white hover:text-black transition">SHOP NOW</a>
 </div>
 </section>
 
-<section id="shop" class="max-w-[1300px] mx-auto px-4 py-16">
-<h2 class="bebas text-[50px]">ALL COLLECTION</h2>
-<p class="text-[11px] tracking-widest opacity-50 -mt-2 mb-8">CROSS 145K + BABYTEE RHINESTONE 135K + ONGKIR JNE J&T</p>
-
-<div id="babytee" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 bg-[#fff5f8] p-4 md:p-8 rounded-[24px] border border-pink-100">
-<div class="md:col-span-2"><h3 class="bebas text-[32px]">💎 BABYTEE RHINESTONE - NEW DROP</h3><p class="text-[11px] opacity-60">Pink rhinestone glitter - bahan babytery premium - crop fit - best seller cewe!</p></div>
-
-<div class="product-card bg-white rounded-[20px] overflow-hidden border">
-<div class="aspect-[4/5] bg-[#f9f9f9] relative"><img id="img-BABY_BLACK" src="babytee_black.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-4 left-4 bg-black text-white text-[9px] px-3 py-1.5 rounded-full tracking-widest">NEW • BLACK</span><span class="absolute bottom-4 right-4 bg-pink-500 text-white text-[9px] px-3 py-1 rounded-full">PINK RHINESTONE</span></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE BLACK</h4><p class="text-[11px] opacity-50">Crop babytee • Rhinestone pink glitter</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-4" id="sizes-BABY_BLACK"></div><button onclick="addToCart('BABY_BLACK')" class="w-full mt-4 bg-black text-white py-3.5 rounded-full text-[11px] font-bold tracking-widest">ADD TO CART - 135K</button></div>
-</div>
-
-<div class="product-card bg-white rounded-[20px] overflow-hidden border">
-<div class="aspect-[4/5] bg-[#f9f9f9] relative"><img src="babytee_white.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-4 left-4 bg-white border text-black text-[9px] px-3 py-1.5 rounded-full tracking-widest">BEST SELLER • WHITE</span></div>
-<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE WHITE</h4><p class="text-[11px] opacity-50">Crop babytee • Rhinestone pink glitter</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-4" id="sizes-BABY_WHITE"></div><button onclick="addToCart('BABY_WHITE')" class="w-full mt-4 bg-black text-white py-3.5 rounded-full text-[11px] font-bold tracking-widest">ADD TO CART - 135K</button></div>
-</div>
+<!-- SHOP - SEMUA PRODUK ADA -->
+<section id="shop" class="max-w-[1300px] mx-auto px-4 py-12">
+<div class="text-center mb-10">
+<h2 class="bebas text-[44px]">SHOP COLLECTION</h2>
+<p class="text-[11px] tracking-widest opacity-50">CROSS 145K • BABYTEE RHINESTONE 135K • + ONGKIR JNE J&T</p>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="product-card border bg-white"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_black.jpg" class="w-full h-full object-contain p-6"></div><div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT BLACK</h4><p class="font-bold">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_BLACK"></div><button onclick="addToCart('CROSS_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button></div></div>
-<div class="product-card border bg-white"><div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_white.jpg" class="w-full h-full object-contain p-6"></div><div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT WHITE</h4><p class="font-bold">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_WHITE"></div><button onclick="addToCart('CROSS_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART</button></div></div>
+<!-- BABYTEE BLACK -->
+<div class="product-card border rounded-[16px] overflow-hidden bg-white">
+<div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_black.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-black text-white text-[9px] px-3 py-1 rounded-full">NEW 💎</span></div>
+<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE BLACK</h4><p class="text-[11px] opacity-50">Pink glitter rhinestone • Crop fit</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_BLACK"></div><button onclick="addToCart('BABY_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div>
+</div>
+<!-- BABYTEE WHITE -->
+<div class="product-card border rounded-[16px] overflow-hidden bg-white">
+<div class="aspect-[4/5] bg-[#fafafa] relative"><img src="babytee_white.jpg" class="w-full h-full object-contain p-6"><span class="absolute top-3 left-3 bg-white border text-black text-[9px] px-3 py-1 rounded-full">NEW</span></div>
+<div class="p-5"><h4 class="font-bold text-[13px]">BABYTEE RHINESTONE WHITE</h4><p class="text-[11px] opacity-50">Pink glitter rhinestone • Crop fit</p><p class="font-bold mt-1">Rp 135.000</p><div class="flex gap-2 mt-3" id="sizes-BABY_WHITE"></div><button onclick="addToCart('BABY_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 135K</button></div>
+</div>
+<!-- CROSS BLACK -->
+<div class="product-card border rounded-[16px] overflow-hidden bg-white">
+<div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_black.jpg" class="w-full h-full object-contain p-6"></div>
+<div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT BLACK</h4><p class="text-[11px] opacity-50">Oversized • Final 2 pcs</p><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_BLACK"></div><button onclick="addToCart('CROSS_BLACK')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div>
+</div>
+<!-- CROSS WHITE -->
+<div class="product-card border rounded-[16px] overflow-hidden bg-white">
+<div class="aspect-[4/5] bg-[#f6f6f6]"><img src="cross_white.jpg" class="w-full h-full object-contain p-6"></div>
+<div class="p-5"><h4 class="font-bold text-[13px]">CROSS TSHIRT WHITE</h4><p class="text-[11px] opacity-50">Oversized</p><p class="font-bold mt-1">Rp 145.000</p><div class="flex gap-2 mt-3" id="sizes-CROSS_WHITE"></div><button onclick="addToCart('CROSS_WHITE')" class="w-full mt-3 bg-black text-white py-3 rounded-full text-[11px] font-bold">ADD TO CART - 145K</button></div>
+</div>
 </div>
 </section>
 
-<div id="cart" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute right-0 top-0 h-full w-[92%] md:w-[420px] bg-white p-6 flex flex-col"><div class="flex justify-between"><h3 class="bebas text-[28px]">CART (<span id="cartCountText">0</span>)</h3><button onclick="document.getElementById('cart').classList.add('hidden')">✕</button></div><div id="cartItems" class="flex-1 py-4 overflow-auto"></div><div class="border-t pt-4"><div class="flex justify-between text-[11px]"><span>Subtotal</span><span id="subtotalText">Rp 0</span></div><div class="flex justify-between text-[11px] mt-1"><span>Ongkir JNE/J&T</span><span id="ongkirText">Rp 0</span></div><div class="flex justify-between font-bold text-[16px] mt-3 pt-3 border-t"><span>TOTAL</span><span id="cartTotal">Rp 0</span></div><button onclick="openCheckout()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">CHECKOUT</button></div></div></div>
+<div id="cart" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute right-0 top-0 h-full w-[92%] md:w-[420px] bg-white p-6 flex flex-col"><div class="flex justify-between"><h3 class="bebas text-[28px]">CART (<span id="cartCountText">0</span>)</h3><button onclick="document.getElementById('cart').classList.add('hidden')">✕</button></div><div id="cartItems" class="flex-1 py-4 overflow-auto border-t mt-4"></div><div class="border-t pt-4"><div class="flex justify-between text-[11px]"><span>Subtotal</span><span id="subtotalText">Rp 0</span></div><div class="flex justify-between text-[11px] mt-1"><span>Ongkir JNE/J&T</span><span id="ongkirText">Rp 0</span></div><div class="flex justify-between font-bold text-[16px] mt-3 pt-3 border-t"><span>TOTAL</span><span id="cartTotal">Rp 0</span></div><button onclick="openCheckout()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">CHECKOUT</button></div></div></div>
 
-<div id="checkoutModal" class="fixed inset-0 z-[110] hidden"><div class="absolute inset-0 bg-black/70" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute bottom-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white w-full md:w-[440px] p-6 md:rounded-[20px]"><h3 class="bebas text-[30px]">CHECKOUT</h3><input id="custName" placeholder="Nama *" class="w-full border p-3 mt-4 text-sm"><input id="custWa" placeholder="WA *" class="w-full border p-3 mt-2 text-sm"><textarea id="custAddr" placeholder="Alamat Lengkap *" class="w-full border p-3 mt-2 text-sm h-[60px]"></textarea><select id="shipMethod" onchange="updateCart()" class="w-full border p-3 mt-2 text-xs"></select><div id="checkoutSummary" class="bg-gray-100 p-3 text-[11px] mt-3"></div><button onclick="placeOrder()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">PESAN VIA WA</button></div></div>
+<div id="checkoutModal" class="fixed inset-0 z-[110] hidden"><div class="absolute inset-0 bg-black/70" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute bottom-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white w-full md:w-[440px] p-6 md:rounded-[20px]"><h3 class="bebas text-[28px]">CHECKOUT</h3><input id="custName" placeholder="Nama *" class="w-full border p-3 mt-4 text-sm"><input id="custWa" placeholder="WA *" class="w-full border p-3 mt-2 text-sm"><textarea id="custAddr" placeholder="Alamat Lengkap *" class="w-full border p-3 mt-2 text-sm h-[60px]"></textarea><select id="shipMethod" onchange="updateCart()" class="w-full border p-3 mt-2 text-xs"></select><div id="checkoutSummary" class="bg-gray-100 p-3 text-[11px] mt-3"></div><button onclick="placeOrder()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">PESAN VIA WA</button></div></div>
+
+<footer class="bg-black text-white/40 py-8 text-center text-[10px]"><div class="logo-oval grgs text-white border-white mx-auto mb-2">GRGS</div>GREGARIOUS CLUB © 2026</footer>
 
 <script>
 let selected={}, cart=[];
 const shipSel=document.getElementById('shipMethod');
 Object.entries(ONGKIR).forEach(([n,h])=>{let o=document.createElement('option');o.value=n;o.innerText=`${n} - Rp ${h.toLocaleString('id-ID')}`;shipSel.appendChild(o);});
 function getOngkir(){let s=shipSel.value||Object.keys(ONGKIR)[0];let k=Object.keys(ONGKIR).find(k=>s.includes(k))||Object.keys(ONGKIR)[0];return ONGKIR[k]||0;}
-function renderSizes(){Object.keys(PRODUCTS).forEach(id=>{let cont=document.getElementById('sizes-'+id);if(!cont)return;cont.innerHTML='';Object.keys(PRODUCTS[id].stock).forEach(size=>{let q=PRODUCTS[id].stock[size];let b=document.createElement('button');b.innerText=size;b.className='border rounded-full w-9 h-9 text-[11px] font-bold '+(q==0?'opacity-20 line-through':'hover:bg-black hover:text-white');if(q==0)b.disabled=true;b.onclick=()=>{selected[id]=size;cont.querySelectorAll('button').forEach(x=>x.classList.remove('bg-black','text-white'));b.classList.add('bg-black','text-white');};cont.appendChild(b);});let first=Object.keys(PRODUCTS[id].stock).find(s=>PRODUCTS[id].stock[s]>0);if(first){selected[id]=first;setTimeout(()=>{cont.querySelectorAll('button').forEach(b=>{if(b.innerText==first)b.click()})},100)}})}
-function addToCart(id){let size=selected[id];if(!size)return alert('Pilih size!');if(PRODUCTS[id].stock[size]<=0)return alert('Habis!');if(cart.filter(i=>i.id==id&&i.size==size).length>=PRODUCTS[id].stock[size])return alert('Stok cuma '+PRODUCTS[id].stock[size]);cart.push({id,size,price:PRODUCTS[id].price,name:PRODUCTS[id].name});PRODUCTS[id].stock[size]--;updateCart();document.getElementById('cart').classList.remove('hidden');renderSizes();}
-function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartCountText').innerText=cart.length;let sub=cart.reduce((a,b)=>a+b.price,0);let ong=cart.length>0?getOngkir():0;let tot=sub+ong;document.getElementById('subtotalText').innerText='Rp '+sub.toLocaleString('id-ID');document.getElementById('ongkirText').innerText='Rp '+ong.toLocaleString('id-ID');document.getElementById('cartTotal').innerText='Rp '+tot.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map((i,idx)=>`<div class="flex justify-between py-3 border-b text-[12px]"><span>${i.name} ${i.size}</span><span>Rp ${i.price.toLocaleString('id-ID')} <button onclick="removeItem(${idx})">✕</button></span></div>`).join('')||'<p class="text-center py-10 opacity-40 text-xs">Kosong bos</p>';document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`• ${i.name} ${i.size} - Rp ${i.price.toLocaleString('id-ID')}`).join('<br>')+`<br><br>Subtotal Rp ${sub.toLocaleString('id-ID')}<br>Ongkir Rp ${ong.toLocaleString('id-ID')}<br><b>TOTAL Rp ${tot.toLocaleString('id-ID')}</b>`;}
+function renderSizes(){Object.keys(PRODUCTS).forEach(id=>{let cont=document.getElementById('sizes-'+id);if(!cont)return;cont.innerHTML='';Object.keys(PRODUCTS[id].stock).forEach(s=>{let q=PRODUCTS[id].stock[s];let b=document.createElement('button');b.innerText=s;b.className='border rounded-full w-9 h-9 text-[11px] font-bold '+(q==0?'opacity-20 line-through':'hover:bg-black hover:text-white');if(q==0)b.disabled=true;b.onclick=()=>{selected[id]=s;cont.querySelectorAll('button').forEach(x=>x.classList.remove('bg-black','text-white'));b.classList.add('bg-black','text-white');};cont.appendChild(b);});let f=Object.keys(PRODUCTS[id].stock).find(s=>PRODUCTS[id].stock[s]>0);if(f){selected[id]=f;setTimeout(()=>cont.querySelectorAll('button').forEach(b=>{if(b.innerText==f)b.click()}),100)}})}
+function addToCart(id){let s=selected[id];if(!s)return alert('Pilih size');if(PRODUCTS[id].stock[s]<=0)return alert('Habis');if(cart.filter(i=>i.id==id&&i.size==s).length>=PRODUCTS[id].stock[s])return alert('Stok cuma '+PRODUCTS[id].stock[s]);cart.push({id,size:s,price:PRODUCTS[id].price,name:PRODUCTS[id].name});PRODUCTS[id].stock[s]--;updateCart();document.getElementById('cart').classList.remove('hidden');renderSizes();}
+function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartCountText').innerText=cart.length;let sub=cart.reduce((a,b)=>a+b.price,0),ong=cart.length>0?getOngkir():0,tot=sub+ong;document.getElementById('subtotalText').innerText='Rp '+sub.toLocaleString('id-ID');document.getElementById('ongkirText').innerText='Rp '+ong.toLocaleString('id-ID');document.getElementById('cartTotal').innerText='Rp '+tot.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map((i,idx)=>`<div class="flex justify-between py-3 border-b text-[12px]"><span>${i.name} ${i.size}</span><span>Rp ${i.price.toLocaleString('id-ID')} <button onclick="removeItem(${idx})">✕</button></span></div>`).join('')||'<p class="text-center py-10 opacity-40 text-xs">Kosong</p>';document.getElementById('checkoutSummary').innerHTML=cart.map(i=>`• ${i.name} ${i.size}`).join('<br>')+`<br><br>Subtotal Rp ${sub.toLocaleString('id-ID')}<br>Ongkir Rp ${ong.toLocaleString('id-ID')}<br><b>TOTAL Rp ${tot.toLocaleString('id-ID')}</b>`;}
 function removeItem(i){PRODUCTS[cart[i].id].stock[cart[i].size]++;cart.splice(i,1);updateCart();renderSizes();}
-function openCheckout(){if(cart.length==0)return;document.getElementById('cart').classList.add('hidden');document.getElementById('checkoutModal').classList.remove('hidden');updateCart();}
-function placeOrder(){let n=document.getElementById('custName').value,w=document.getElementById('custWa').value,a=document.getElementById('custAddr').value;if(!n||!w||!a)return alert('Lengkapi!');let sub=cart.reduce((a,b)=>a+b.price,0),ong=getOngkir(),tot=sub+ong,ship=shipSel.value;let txt=`ORDER GRGS%0A${cart.map(i=>`- ${i.name} Size ${i.size} Rp ${i.price.toLocaleString('id-ID')}`).join('%0A')}%0A%0ASubtotal Rp ${sub.toLocaleString('id-ID')}%0AOngkir ${ship} Rp ${ong.toLocaleString('id-ID')}%0ATOTAL Rp ${tot.toLocaleString('id-ID')}%0A%0ANama: ${n}%0AWA: ${w}%0AAlamat: ${a}%0A%0ABRI ${REK_BRI} An. ${NAMA_REK}`;window.open(`https://wa.me/${NO_WA}?text=${txt}`,'_blank');}renderSizes();
+function openCheckout(){if(!cart.length)return;document.getElementById('cart').classList.add('hidden');document.getElementById('checkoutModal').classList.remove('hidden');updateCart();}
+function placeOrder(){let n=document.getElementById('custName').value,w=document.getElementById('custWa').value,a=document.getElementById('custAddr').value;if(!n||!w||!a)return alert('Lengkapi');let sub=cart.reduce((a,b)=>a+b.price,0),ong=getOngkir(),tot=sub+ong,ship=shipSel.value;let txt=`ORDER GRGS%0A${cart.map(i=>`- ${i.name} ${i.size} Rp ${i.price.toLocaleString('id-ID')}`).join('%0A')}%0A%0ASubtotal Rp ${sub.toLocaleString('id-ID')}%0AOngkir ${ship} Rp ${ong.toLocaleString('id-ID')}%0ATOTAL Rp ${tot.toLocaleString('id-ID')}%0A%0ANama: ${n}%0AWA: ${w}%0AAlamat: ${a}`;window.open(`https://wa.me/${NO_WA}?text=${txt}`,'_blank');}renderSizes();
 </script>
 </body>
 </html>
