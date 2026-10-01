@@ -1,40 +1,41 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GREGARIOUS CLUB</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>.bebas{font-family:Bebas Neue,sans-serif}.size-btn.active{background:black;color:white}</style>
-</head>
-<body class="bg-white text-black">
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GREGARIOUS CLUB - UNITED AS ONE</title><script src="https://cdn.tailwindcss.com"></script><style>.size-btn.active{background:#000;color:#fff}</style></head><body class="bg-white text-black">
 <script>
 const PRODUCTS={
-A:{name:"CROSS TSHIRT - BLACK",price:145000,img:"cross_black.jpg",stock:{S:2,M:3,L:2,XL:1},sold:120,initial:150},
-B:{name:"CROSS TSHIRT - WHITE",price:145000,img:"cross_white.jpg",stock:{S:2,M:3,L:2,XL:1},sold:98,initial:120},
-C:{name:"BABYTEE BLACK",price:135000,img:"babytee_black.jpg",stock:{S:5,M:5,L:5,XL:2},sold:75,initial:100},
-D:{name:"BABYTEE WHITE",price:135000,img:"babytee_white.jpg",stock:{S:5,M:5,L:5,XL:2},sold:68,initial:100},
-E:{name:"RICH BEFORE WHITE PINK (NEW)",price:155000,img:"richbefore_wp_front.jpg",stock:{S:5,M:5,L:5,XL:5},sold:12,initial:50},
-F:{name:"RICH BEFORE WHITE GREY (ARCHIVE)",price:155000,img:"richbefore_wg_front.jpg",stock:{S:0,M:0,L:0,XL:0},sold:50,initial:50},
-G:{name:"RICH BEFORE BLACK GREY",price:155000,img:"richbefore_bg_front.jpg",stock:{S:2,M:3,L:2,XL:1},sold:45,initial:50},
-H:{name:"RICH BEFORE BLACK PINK (ARCHIVE)",price:155000,img:"richbefore_bp_front.jpg",stock:{S:0,M:0,L:0,XL:0},sold:50,initial:50},
-I:{name:"RICH BEFORE WHITE PINK (ARCHIVE)",price:155000,img:"richbefore_wp_front.jpg",stock:{S:0,M:0,L:0,XL:0},sold:50,initial:50},
-J:{name:"FUCKLOVE WHITE",price:145000,img:"fucklove_white_front.jpg",stock:{S:3,M:3,L:3,XL:2},sold:40,initial:60}
+A:{n:"CROSS TSHIRT - BLACK",p:145000,i:"cross_black.jpg",s:{S:2,M:3,L:2,XL:1},sold:120,init:150},
+B:{n:"CROSS TSHIRT - WHITE",p:145000,i:"cross_white.jpg",s:{S:2,M:3,L:2,XL:1},sold:98,init:120},
+C:{n:"BABYTEE BLACK",p:135000,i:"babytee_black.jpg",s:{S:5,M:5,L:5,XL:2},sold:75,init:100},
+D:{n:"BABYTEE WHITE",p:135000,i:"babytee_white.jpg",s:{S:5,M:5,L:5,XL:2},sold:68,init:100},
+E:{n:"RICH BEFORE WP NEW",p:155000,i:"richbefore_wp_front.jpg",s:{S:5,M:5,L:5,XL:5},sold:12,init:50},
+F:{n:"RICH BEFORE WG ARCHIVE",p:155000,i:"richbefore_wg_front.jpg",s:{S:0,M:0,L:0,XL:0},sold:50,init:50},
+G:{n:"RICH BEFORE BG",p:155000,i:"richbefore_bg_front.jpg",s:{S:2,M:3,L:2,XL:1},sold:45,init:50},
+H:{n:"RICH BEFORE BP ARCHIVE",p:155000,i:"richbefore_bp_front.jpg",s:{S:0,M:0,L:0,XL:0},sold:50,init:50},
+I:{n:"RICH BEFORE WP ARCHIVE",p:155000,i:"richbefore_wp_front.jpg",s:{S:0,M:0,L:0,XL:0},sold:50,init:50},
+J:{n:"FUCKLOVE WHITE",p:145000,i:"fucklove_white_front.jpg",s:{S:3,M:3,L:3,XL:2},sold:40,init:60}
 };
-const ONGKIR={"JNE Reguler":15000,"JNE YES":30000};
 </script>
-<header class="flex justify-between p-4 border-b"><b>GRGS</b><button onclick="document.getElementById('cart').classList.remove('hidden')">CART <span id="cartCount">0</span></button></header>
-<section class="bg-black text-white text-center py-20"><h1 class="text-5xl">UNITED<br>AS ONE</h1><a href="#shop" class="inline-block bg-white text-black px-8 py-3 rounded-full mt-6">SHOP NOW</a></section>
-<section id="shop" class="max-w-6xl mx-auto p-4"><h2 class="text-4xl text-center mt-8">SHOP COLLECTION - 10 PRODUK</h2><div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div></section>
-<div id="cart" class="fixed inset-0 hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute right-0 top-0 h-full w-[90%] md:w-[400px] bg-white p-6"><h3>CART (<span id="cartCountText">0</span>)</h3><div id="cartItems" class="mt-4"></div><div id="cartTotal" class="font-bold mt-4">Rp 0</div><button onclick="openCheckout()" class="w-full bg-black text-white py-3 rounded-full mt-4">CHECKOUT</button></div></div>
-<div id="checkoutModal" class="fixed inset-0 hidden bg-white p-6"><h3>CHECKOUT</h3><input id="custName" placeholder="Nama" class="w-full border p-3 mt-4"><input id="custWa" placeholder="WA" class="w-full border p-3 mt-2"><div id="checkoutSummary" class="bg-gray-100 p-3 mt-4 text-xs"></div><button onclick="alert('Order masuk WA 0881023595180');location.reload()" class="w-full bg-black text-white py-3 rounded-full mt-4">BAYAR - BRI 074901024253504 / SEABANK 901100694312</button></div>
+<header class="flex justify-between p-4 border-b"><b>GRGS</b><span id="cartCount">CART 0</span></header>
+<section class="bg-black text-white text-center py-20"><h1 class="text-5xl font-black">UNITED<br>AS ONE</h1><p class="mt-4 text-xs tracking-widest">FOREVER YOUNG</p><a href="#shop" class="inline-block bg-white text-black px-10 py-3 rounded-full mt-6 text-xs font-bold">SHOP NOW</a></section>
+<section id="shop" class="max-w-6xl mx-auto p-4"><h2 class="text-3xl text-center font-black mt-8">SHOP 10 PRODUK</h2><div id="grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div></section>
+<div id="cartBox" class="fixed right-0 top-0 h-full w-[90%] md:w-[380px] bg-white border-l p-6 hidden"><h3 class="font-black">CART</h3><div id="cartItems" class="mt-4 text-xs"></div><div id="cartTotal" class="font-black mt-4"></div><button onclick="document.getElementById('cartBox').classList.add('hidden')" class="mt-4 border px-4 py-2 rounded-full text-xs">TUTUP</button></div>
 <script>
-let selected={},cart=[];
-function renderProducts(){let g=document.getElementById('productGrid');g.innerHTML='';Object.keys(PRODUCTS).forEach(id=>{let p=PRODUCTS[id];let sisa=Object.values(p.stock).reduce((a,b)=>a+b,0);let isHabis=sisa==0;let badge=isHabis?'🔥 HABIS 100%':p.sold+'/'+p.initial+' TERJUAL';let sisaText=isHabis?'HABIS':(sisa<=3?'⚠️ SISA '+sisa+' LAGI!':'Sisa '+sisa);g.innerHTML+=`<div class="border rounded-2xl overflow-hidden p-4"><img src="${p.img}" class="w-full h-64 object-contain bg-gray-50"><h4 class="font-bold text-sm mt-3">${p.name}</h4><p class="font-black">Rp ${p.price.toLocaleString('id-ID')} - ${sisaText}</p><p class="text-xs opacity-50">${badge}</p><div class="flex gap-2 mt-3" id="sizes-${id}"></div><button onclick="${isHabis?'alert(\'habis\')':'addToCart(\''+id+'\')'}" class="w-full mt-3 ${isHabis?'bg-gray-300':'bg-black text-white'} py-3 rounded-full text-xs font-bold">${isHabis?'HABIS':'ADD TO CART'}</button></div>`;});renderSizes();}
-function renderSizes(){Object.keys(PRODUCTS).forEach(id=>{let c=document.getElementById('sizes-'+id);if(!c)return;c.innerHTML='';Object.keys(PRODUCTS[id].stock).forEach(s=>{let b=document.createElement('button');b.textContent=s;b.className='border rounded-full w-10 h-10 text-xs';b.onclick=()=>{selected[id]=s;c.querySelectorAll('button').forEach(x=>x.style.background='');b.style.background='black';b.style.color='white';};c.appendChild(b);});});}
-function addToCart(id){if(!selected[id])return alert('Pilih size!');cart.push({id,size:selected[id],price:PRODUCTS[id].price,name:PRODUCTS[id].name});document.getElementById('cartCount').textContent=cart.length;document.getElementById('cartCountText').textContent=cart.length;updateCart();document.getElementById('cart').classList.remove('hidden');}
-function updateCart(){let tot=cart.reduce((a,b)=>a+b.price,0);document.getElementById('cartTotal').textContent='TOTAL Rp '+tot.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map(i=>i.name+' '+i.size+' - Rp '+i.price.toLocaleString('id-ID')).join('<br>');document.getElementById('checkoutSummary').innerHTML=document.getElementById('cartItems').innerHTML+'<br><br>TOTAL Rp '+tot.toLocaleString('id-ID');}
-function openCheckout(){document.getElementById('cart').classList.add('hidden');document.getElementById('checkoutModal').classList.remove('hidden');}
-renderProducts();
+let sel={},cart=[];
+function render(){
+let g=document.getElementById('grid');g.innerHTML='';
+Object.keys(PRODUCTS).forEach(id=>{
+let p=PRODUCTS[id];let sisa=Object.values(p.s).reduce((a,b)=>a+b,0);let isHabis=sisa==0;
+let badge=isHabis?'🔥 HABIS 100%':Math.round(p.sold/p.init*100)+'% TERJUAL';
+let sisaText=isHabis?'HABIS':(sisa<=3?'⚠️ SISA '+sisa+' LAGI!':'Sisa '+sisa);
+g.innerHTML+=`<div class="border rounded-2xl p-4"><img src="${p.i}" onerror="this.src='https://via.placeholder.com/400x500'" class="w-full h-64 object-contain bg-gray-50"><h4 class="font-bold text-sm mt-3">${p.n}</h4><p class="font-black text-sm">Rp ${p.p.toLocaleString('id-ID')} - ${sisaText}</p><p class="text-[10px] opacity-50">${badge} • ${p.sold}/${p.init}</p><div class="flex gap-2 mt-3" id="sz-${id}"></div><button onclick="${isHabis?'alert(\\'HABIS\\')':'addToCart(\\''+id+'\\')'}" class="w-full mt-3 ${isHabis?'bg-gray-300':'bg-black text-white'} py-3 rounded-full text-xs font-bold">${isHabis?'HABIS':'ADD TO CART'}</button></div>`;
+});
+Object.keys(PRODUCTS).forEach(id=>{
+let c=document.getElementById('sz-'+id);Object.keys(PRODUCTS[id].s).forEach(s=>{
+let q=PRODUCTS[id].s[s];let b=document.createElement('button');b.textContent=s;b.className='border rounded-full w-9 h-9 text-xs '+(q==0?'opacity-20':'');if(q==0)b.disabled=true;
+b.onclick=()=>{sel[id]=s;c.querySelectorAll('button').forEach(x=>x.className='border rounded-full w-9 h-9 text-xs');b.className='size-btn active border rounded-full w-9 h-9 text-xs';};
+c.appendChild(b);
+});
+});
+}
+function addToCart(id){if(!sel[id])return alert('Pilih size!');cart.push({id,sz:sel[id],p:PRODUCTS[id].p,n:PRODUCTS[id].n});document.getElementById('cartCount').textContent='CART '+cart.length;let tot=cart.reduce((a,b)=>a+b.p,0);document.getElementById('cartItems').innerHTML=cart.map(x=>x.n+' '+x.sz).join('<br>');document.getElementById('cartTotal').textContent='TOTAL Rp '+tot.toLocaleString('id-ID');document.getElementById('cartBox').classList.remove('hidden');}
+render();
 </script>
-</body>
-</html>
+</body></html>
