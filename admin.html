@@ -1,26 +1,266 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GRGS ADMIN V13 - FIX CONNECT</title>
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-4">
-<h1 class="text-2xl font-black">GRGS ADMIN V13 - CONNECT FIX</h1>
-<p class="text-xs opacity-60 mt-1">Edit -> SIMPAN -> DOWNLOAD INDEX FULL -> Upload GitHub. Beranda gak ilang lagi!</p>
-<div class="mt-6 grid grid-cols-1 gap-4" id="prodList"></div>
-<div class="mt-8 flex gap-3 flex-wrap">
-<button onclick="saveToStorage()" class="bg-black text-white px-6 py-3 rounded-full text-xs font-bold">💾 SIMPAN KE BROWSER</button>
-<button onclick="downloadIndex()" class="bg-blue-600 text-white px-6 py-3 rounded-full text-xs font-bold">⬇️ DOWNLOAD INDEX.HTML FULL (GAK KEPOTONG)</button>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRGS ADMIN V12.2 - GENERATE HABIS</title><script src="https://cdn.tailwindcss.com"></script>
+<style>.tab-active{background:black!important;color:white!important}</style>
+</head><body class="bg-[#f5f5f5] p-3 md:p-6">
+<div class="max-w-[950px] mx-auto">
+<div class="bg-black text-white p-5 rounded-[16px] flex justify-between items-center">
+<div><h1 class="font-black text-[16px]">GRGS ADMIN V12.2 🔥 GENERATE HABIS</h1><p class="text-[10px] opacity-60">1 KLIK JADI 10 PRODUK - 4 JUAL + 6 ARCHIVE 100% TERJUAL</p></div>
+<a href="/" class="bg-white text-black px-4 py-2 rounded-full text-[11px] font-bold">LIHAT TOKO</a>
 </div>
+
+<div class="flex gap-2 mt-4 overflow-x-auto pb-2">
+<button onclick="showTab('products')" id="tab_products" class="tab-active bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap">👕 PRODUK (<span id="pc">0</span>)</button>
+<button onclick="showTab('setting')" id="tab_setting" class="bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap">🎨 BERANDA</button>
+<button onclick="showTab('ratings')" id="tab_ratings" class="bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap">⭐ RATING</button>
+<button onclick="showTab('orders')" id="tab_orders" class="bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap">📦 PESANAN (<span id="orderCount">0</span>)</button>
+<button onclick="showTab('ongkir')" id="tab_ongkir" class="bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap">🚚 ONGKIR</button>
+</div>
+
+<div id="content_products" class="bg-white p-5 rounded-[16px] border mt-4">
+<div class="flex flex-col md:flex-row justify-between gap-3 items-start md:items-center mb-3">
+<h3 class="font-black text-[13px]">👕 PRODUK - <span id="pc2">0</span> TOTAL</h3>
+<div class="flex gap-2">
+<button onclick="generateHabis()" class="bg-red-600 text-white px-5 py-2.5 rounded-full text-[11px] font-black animate-pulse">🔥 GENERATE 6 HABIS BIAR RAME</button>
+<button onclick="addProduct()" class="bg-black text-white px-5 py-2.5 rounded-full text-[10px] font-bold">+ TAMBAH</button>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+<div class="bg-black text-white p-3 rounded-[12px] text-center"><p class="text-[20px] font-black" id="statJual">0</p><p class="text-[9px]">MASIH JUAL</p></div>
+<div class="bg-red-600 text-white p-3 rounded-[12px] text-center"><p class="text-[20px] font-black" id="statHabis">0</p><p class="text-[9px]">100% HABIS (ARCHIVE)</p></div>
+<div class="bg-gray-200 p-3 rounded-[12px] text-center"><p class="text-[20px] font-black" id="statTotalTerjual">0</p><p class="text-[9px]">TOTAL TERJUAL</p></div>
+</div>
+
+<div class="bg-blue-50 border border-blue-200 p-3 rounded-[10px] text-[10px] mb-4">
+<p class="font-bold">🔥 TRIK BIAR KELIATAN RAME:</p>
+<p>1. Klik GENERATE 6 HABIS - otomatis nambah 6 produk 100% terjual</p>
+<p>2. Web lu dari 4 jadi 10 produk - keliatan laris!</p>
+<p>3. Produk habis tetep bisa di-swipe depan belakang - tombol jadi "HABIS"</p>
+<p>4. Pembeli liat: "Wah 150+ terjual - banyak yang habis!"</p>
+</div>
+
+<div id="productList" class="space-y-4"></div>
+</div>
+
+<div id="content_setting" class="bg-white p-5 rounded-[16px] border mt-4 hidden">
+<h3 class="font-black text-[14px]">🎨 BERANDA</h3>
+<div class="grid grid-cols-2 gap-3 mt-3"><div><label class="text-[10px] font-bold">FOTO BERANDA</label><input id="heroImg" value="hero.jpg" class="w-full border rounded-full px-4 py-2.5 text-[11px]"></div><div><label class="text-[10px] font-bold">RUNNING</label><input id="running" value="⭐ RATING 4.9/5 • UNITED AS ONE • TERJUAL 1000+ • ANTI TIPU" class="w-full border rounded-full px-4 py-2.5 text-[11px]"></div></div>
+<div class="grid grid-cols-2 gap-3 mt-3"><div><input id="heroTitle1" value="UNITED" class="w-full border rounded-full px-4 py-2.5 text-[13px] font-black"></div><div><input id="heroTitle2" value="AS ONE" class="w-full border rounded-full px-4 py-2.5 text-[13px] font-black"></div></div>
+<div class="mt-3"><input id="heroSubtitle" value="GREGARIOUS CLUB • EST 2024 • BANDUNG" class="w-full border rounded-full px-4 py-2.5 text-[11px]"><textarea id="heroDesc" class="w-full border rounded-[12px] px-4 py-3 text-[11px] h-[50px] mt-2">Koleksi eksklusif stok terbatas.</textarea></div>
+<div class="grid grid-cols-3 gap-2 mt-3 bg-gray-100 p-3 rounded-[12px]"><div><input id="stat1Num" value="1000+" class="w-full border rounded-full px-3 py-2 text-[12px] font-black"><input id="stat1Label" value="TERJUAL" class="w-full border rounded-full px-3 py-1.5 text-[10px] mt-1"></div><div><input id="stat2Num" value="4.9/5" class="w-full border rounded-full px-3 py-2 text-[12px] font-black"><input id="stat2Label" value="RATING" class="w-full border rounded-full px-3 py-1.5 text-[10px] mt-1"></div><div><input id="stat3Num" value="40614" class="w-full border rounded-full px-3 py-2 text-[12px] font-black"><input id="stat3Label" value="BANDUNG" class="w-full border rounded-full px-3 py-1.5 text-[10px] mt-1"></div></div>
+<div class="grid grid-cols-2 gap-3 mt-3"><input id="shopTitle" value="SHOP COLLECTION" class="w-full border rounded-full px-4 py-2.5 text-[12px] font-bold"><input id="shopSubtitle" value="⭐ 4.9/5 • STOK TERBATAS" class="w-full border rounded-full px-4 py-2.5 text-[11px]"></div>
+<div class="mt-3"><input id="aboutTitle" value="UNITED AS ONE" class="w-full border rounded-full px-4 py-2.5 text-[12px] font-bold"><textarea id="aboutDesc" class="w-full border rounded-[12px] px-4 py-3 text-[11px] h-[60px] mt-2">Brand lokal Bandung 40614.</textarea></div>
+<div class="grid grid-cols-2 gap-3 mt-3"><input id="wa" value="62881023595180" class="w-full border rounded-full px-4 py-2.5 text-[13px] font-bold"><input id="heroButton" value="SHOP NOW →" class="w-full border rounded-full px-4 py-2.5 text-[11px]"></div>
+<div class="grid grid-cols-2 gap-3 mt-3"><div><input id="rek_bri" value="074901024253504" class="w-full border rounded-full px-4 py-2 text-[12px] font-mono"><input id="nama_bri" value="RIZAL FARUK HAYDAR" class="w-full border rounded-full px-4 py-2 text-[10px] mt-1"></div><div><input id="rek_seabank" value="901100694312" class="w-full border rounded-full px-4 py-2 text-[12px] font-mono"><input id="nama_seabank" value="RIZAL FARUK HAYDAR" class="w-full border rounded-full px-4 py-2 text-[10px] mt-1"></div></div>
+</div>
+
+<div id="content_ratings" class="bg-white p-5 rounded-[16px] border mt-4 hidden">
+<h3 class="font-black text-[13px]">⭐ RATING</h3><div id="ratingList" class="mt-3"></div>
+<div class="mt-4 bg-gray-50 p-4 rounded-[12px]"><select id="newRatingProduct" class="border rounded-full px-3 py-2.5 text-[11px] w-full bg-white"></select><select id="newRatingStar" class="border rounded-full px-3 py-2.5 text-[11px] mt-2 w-full"><option value="5">⭐⭐⭐⭐⭐ 5</option><option value="4">⭐⭐⭐⭐ 4</option></select><input id="newRatingName" placeholder="Nama - Kota" class="w-full border rounded-full px-3 py-2.5 mt-2 text-[11px]"><textarea id="newRatingComment" placeholder="Komentar" class="w-full border rounded-[12px] px-3 py-2.5 mt-2 text-[11px] h-[50px]"></textarea><button onclick="addManualRating()" class="w-full bg-black text-white py-3 rounded-full text-[11px] font-bold mt-2">+ TAMBAH</button></div>
+</div>
+
+<div id="content_orders" class="bg-white p-5 rounded-[16px] border mt-4 hidden">
+<div class="flex justify-between items-center mb-4"><h3 class="font-black text-[13px]">📦 PESANAN - <span id="orderCount2">0</span></h3><div class="flex gap-2"><select id="filterStatus" onchange="renderOrders()" class="border rounded-full px-3 py-2 text-[10px]"><option value="all">Semua</option><option value="waiting">Menunggu</option><option value="paid">Valid</option></select><button onclick="exportOrders()" class="bg-green-600 text-white px-4 py-2 rounded-full text-[10px] font-bold">EXPORT</button></div></div>
+<div id="orderList"></div>
+</div>
+
+<div id="content_ongkir" class="bg-white p-5 rounded-[16px] border mt-4 hidden">
+<h3 class="font-black text-[13px]">🚚 ONGKIR</h3><div id="ongkirList" class="mt-3 space-y-2"></div>
+<div class="mt-4 flex gap-2"><input id="newOngkirName" placeholder="Nama" class="flex-1 border rounded-full px-4 py-2.5 text-[11px]"><input id="newOngkirPrice" type="number" placeholder="13000" class="w-[120px] border rounded-full px-4 py-2.5 text-[11px]"><button onclick="addOngkir()" class="bg-black text-white px-5 py-2.5 rounded-full text-[11px] font-bold">+ TAMBAH</button></div>
+</div>
+
+<div class="bg-black text-white p-5 rounded-[16px] mt-5 sticky bottom-3">
+<button onclick="downloadNewIndex()" class="w-full bg-white text-black py-4 rounded-full font-black text-[12px]">⬇️ DOWNLOAD INDEX.HTML V12.2 - 10 PRODUK RAME!</button>
+<p id="status" class="text-[11px] mt-3 text-center opacity-70">Klik GENERATE 6 HABIS biar web keliatan rame - progress bar 100% merah!</p>
+</div>
+</div>
+
 <script>
-const DEFAULT_PRODUCTS={CROSS_BLACK:{name:"CROSS TSHIRT - BLACK",price:145000,img:"cross_black.jpg",images:["cross_black.jpg"],stock:{S:2,M:3,L:2,XL:1},sold:120,initial:150},CROSS_WHITE:{name:"CROSS TSHIRT - WHITE",price:145000,img:"cross_white.jpg",stock:{S:2,M:3,L:2,XL:1},sold:98,initial:120},RICH_WP:{name:"RICH BEFORE - WHITE PINK (NEW)",price:155000,img:"richbefore_wp_front.jpg",stock:{S:5,M:5,L:5,XL:5},sold:12,initial:50},RICH_WG:{name:"RICH BEFORE - WHITE GREY (ARCHIVE)",price:155000,img:"richbefore_wg_front.jpg",stock:{S:0,M:0,L:0,XL:0},sold:50,initial:50},RICH_BP:{name:"RICH BEFORE - BLACK PINK (ARCHIVE)",price:155000,img:"richbefore_bp_front.jpg",stock:{S:0,M:0,L:0,XL:0},sold:50,initial:50},RICH_BG:{name:"RICH BEFORE - BLACK GREY",price:155000,img:"richbefore_bg_front.jpg",stock:{S:2,M:3,L:2,XL:1},sold:45,initial:50}};
-let PRODUCTS;try{PRODUCTS=JSON.parse(localStorage.getItem('GRGS_PRODUCTS_V12')||'null')||DEFAULT_PRODUCTS;}catch(e){PRODUCTS=DEFAULT_PRODUCTS;}
-function render(){const c=document.getElementById('prodList');c.innerHTML='';Object.keys(PRODUCTS).forEach(id=>{let p=PRODUCTS[id];let sisa=Object.values(p.stock).reduce((a,b)=>a+b,0);c.innerHTML+=`<div class="bg-white p-4 rounded-xl border ${sisa==0?'border-red-300 bg-red-50':''}"><b class="text-xs">${p.name} - ${sisa==0?'🔥 HABIS 100%':sisa+' sisa'}</b><div class="grid grid-cols-4 gap-2 mt-2"><input id="S_${id}" type="number" value="${p.stock.S}" class="border p-2 text-xs rounded"><input id="M_${id}" type="number" value="${p.stock.M}" class="border p-2 text-xs rounded"><input id="L_${id}" type="number" value="${p.stock.L}" class="border p-2 text-xs rounded"><input id="XL_${id}" type="number" value="${p.stock.XL}" class="border p-2 text-xs rounded"></div></div>`});}
-function collect(){Object.keys(PRODUCTS).forEach(id=>{PRODUCTS[id].stock.S=parseInt(document.getElementById('S_'+id).value);PRODUCTS[id].stock.M=parseInt(document.getElementById('M_'+id).value);PRODUCTS[id].stock.L=parseInt(document.getElementById('L_'+id).value);PRODUCTS[id].stock.XL=parseInt(document.getElementById('XL_'+id).value);});}
-function saveToStorage(){collect();localStorage.setItem('GRGS_PRODUCTS_V12',JSON.stringify(PRODUCTS));alert('TERSIMPAN!');render();}
-function downloadIndex(){collect();let html=`<!DOCTYPE html><html><head><title>GRGS</title><script src="https://cdn.tailwindcss.com"><\/script></head><body><section id="home"><img src="hero.jpg"><h1>UNITED AS ONE</h1></section><section id="shop"><div id="productGrid"></div></section><script>const PRODUCTS=${JSON.stringify(PRODUCTS)}<\/script></body></html>`;let blob=new Blob([html],{type:'text/html'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();}
-render();
-</script>
-</body>
-</html>
+let defaultProducts=[
+  {id:"CROSS_BLACK",name:"CROSS TSHIRT - BLACK",price:145000,img:"cross_black_front.jpg",images:["cross_black_front.jpg","cross_black_back.jpg"],stock:{S:0,M:0,L:2,XL:0},sold:18,initial:20},
+  {id:"CROSS_WHITE",name:"CROSS TSHIRT - WHITE",price:145000,img:"cross_white_front.jpg",images:["cross_white_front.jpg","cross_white_back.jpg"],stock:{S:0,M:3,L:2,XL:1},sold:14,initial:20},
+  {id:"BABY_BLACK",name:"BABYTEE RHINESTONE - BLACK",price:135000,img:"babytee_black_front.jpg",images:["babytee_black_front.jpg","babytee_black_back.jpg"],stock:{S:4,M:5,L:5,XL:0},sold:6,initial:20},
+  {id:"BABY_WHITE",name:"BABYTEE RHINESTONE - WHITE",price:135000,img:"babytee_white_front.jpg",images:["babytee_white_front.jpg","babytee_white_back.jpg"],stock:{S:5,M:5,L:5,XL:0},sold:5,initial:20}
+];
+let products=JSON.parse(localStorage.getItem('GRGS_PRODUCTS')||JSON.stringify(defaultProducts));
+let defaultOngkir={"BANDUNG RAYA - JNE OKE":10000,"JABODETABEK - JNE REG":13000,"JABODETABEK - JNE YES":18000,"JAWA BARAT":13000,"JAWA TENGAH/DIY":18000,"JAWA TIMUR":21000,"SUMATERA":35000,"KALIMANTAN/SULAWESI/BALI":40000,"PAPUA/MALUKU":85000,"J&T ECO":12000,"J&T REG":17000};
+let ongkir=JSON.parse(localStorage.getItem('GRGS_ONGKIR')||JSON.stringify(defaultOngkir));
+let ratings=JSON.parse(localStorage.getItem('GRGS_RATINGS')||'{}');
+
+function showTab(t){
+  ['products','setting','ratings','orders','ongkir'].forEach(x=>{
+    document.getElementById('content_'+x).classList.add('hidden');
+    document.getElementById('tab_'+x).className='bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap';
+  });
+  document.getElementById('content_'+t).classList.remove('hidden');
+  document.getElementById('tab_'+t).className='tab-active bg-white border px-5 py-2.5 rounded-full text-[11px] font-bold whitespace-nowrap';
+  if(t==='orders')renderOrders();
+  if(t==='products')renderProducts();
+  if(t==='ratings')renderRatings();
+  if(t==='ongkir')renderOngkir();
+}
+function saveProducts(){localStorage.setItem('GRGS_PRODUCTS', JSON.stringify(products));}
+function saveOngkir(){localStorage.setItem('GRGS_ONGKIR', JSON.stringify(ongkir));}
+function getOrders(){try{return JSON.parse(localStorage.getItem('GRGS_ORDERS')||'[]')}catch(e){return []}}
+function saveOrders(o){localStorage.setItem('GRGS_ORDERS', JSON.stringify(o))}
+function renderOngkir(){let list=document.getElementById('ongkirList');list.innerHTML='';Object.entries(ongkir).forEach(([name,price])=>{let div=document.createElement('div');div.className='flex justify-between items-center border rounded-full px-4 py-2 bg-gray-50';div.innerHTML=`<span class="text-[11px] font-bold">${name}</span><div class="flex gap-2 items-center"><span class="text-[11px]">Rp ${price.toLocaleString('id-ID')}</span><button onclick="delOngkir('${name}')" class="text-red-500 text-[10px]">HAPUS</button></div>`;list.appendChild(div);});}
+function addOngkir(){let n=document.getElementById('newOngkirName').value.trim();let p=parseInt(document.getElementById('newOngkirPrice').value);if(!n||!p)return alert('Isi!');ongkir[n]=p;saveOngkir();document.getElementById('newOngkirName').value='';document.getElementById('newOngkirPrice').value='';renderOngkir();}
+function delOngkir(name){if(confirm('Hapus '+name+'?')){delete ongkir[name];saveOngkir();renderOngkir();}}
+function renderOrders(){let all=getOrders();let filter=document.getElementById('filterStatus').value;let orders=filter==='all'?all:all.filter(o=>o.status===filter);document.getElementById('orderCount').innerText=all.length;document.getElementById('orderCount2').innerText=all.length;let list=document.getElementById('orderList');if(!orders.length){list.innerHTML='<div class="text-center py-10 opacity-40 text-[11px]">Belum ada pesanan</div>';return;}list.innerHTML='';orders.slice().reverse().forEach(o=>{let div=document.createElement('div');div.className='border rounded-[12px] p-4 mb-3 bg-white';div.innerHTML=`<p class="font-mono font-bold text-[12px]">#${o.id} - ${o.status}</p><p class="text-[11px] mt-1"><b>${o.name}</b> - ${o.tot.toLocaleString('id-ID')}</p>${o.bukti?`<img src="${o.bukti}" class="w-full max-h-[300px] object-contain border rounded-[10px] mt-2">`:''}<div class="flex gap-2 mt-2"><button onclick="updateStatus('${o.id}','paid')" class="bg-green-600 text-white px-3 py-1.5 rounded-full text-[10px]">VALID</button><button onclick="deleteOrder('${o.id}')" class="text-red-500 text-[10px]">HAPUS</button></div>`;list.appendChild(div);});}
+function updateStatus(id,s){let os=getOrders();let o=os.find(x=>x.id===id);if(o){o.status=s;saveOrders(os);renderOrders();}}
+function deleteOrder(id){if(confirm('Hapus #'+id+'?')){saveOrders(getOrders().filter(x=>x.id!==id));renderOrders();}}
+function exportOrders(){let o=getOrders();if(!o.length)return alert('Kosong');let csv='ID,Nama,WA,Total,Status\n'+o.map(x=>`"${x.id}","${x.name}","${x.wa}","${x.tot}","${x.status}"`).join('\n');let blob=new Blob([csv],{type:'text/csv'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ORDERS.csv';a.click();}
+
+function generateHabis(){
+  if(!confirm('Generate 6 produk HABIS biar keliatan rame? Web jadi 10 produk total!'))return;
+  let habisList=[
+    {id:"CROSS_NAVY",name:"CROSS TSHIRT - NAVY (ARCHIVE)",price:145000,img:"cross_navy_front.jpg",images:["cross_navy_front.jpg","cross_navy_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:20,initial:20},
+    {id:"CROSS_GREY",name:"CROSS TSHIRT - GREY (ARCHIVE)",price:145000,img:"cross_grey_front.jpg",images:["cross_grey_front.jpg","cross_grey_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:25,initial:25},
+    {id:"BABY_PINK",name:"BABYTEE RHINESTONE - PINK (ARCHIVE)",price:135000,img:"babytee_pink_front.jpg",images:["babytee_pink_front.jpg","babytee_pink_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:18,initial:18},
+    {id:"HOODIE_BLACK",name:"HOODIE - BLACK (ARCHIVE)",price:285000,img:"hoodie_black_front.jpg",images:["hoodie_black_front.jpg","hoodie_black_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:30,initial:30},
+    {id:"CAP_BLACK",name:"GRGS CAP - BLACK (ARCHIVE)",price:95000,img:"cap_black_front.jpg",images:["cap_black_front.jpg","cap_black_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:15,initial:15},
+    {id:"TOTE_BLACK",name:"TOTE BAG - BLACK (ARCHIVE)",price:75000,img:"tote_black_front.jpg",images:["tote_black_front.jpg","tote_black_back.jpg"],stock:{S:0,M:0,L:0,XL:0},sold:22,initial:22}
+  ];
+  habisList.forEach(h=>{
+    if(!products.find(p=>p.id===h.id)){
+      products.push(h);
+      if(!ratings[h.id]){ratings[h.id]=[{name:"Andra - Jakarta",star:5,comment:"Udah habis? Restock dong!",date:"2026-09-20"},{name:"Riko - Bandung",star:5,comment:"Kualitas premium!",date:"2026-09-18"}];}
+    }
+  });
+  localStorage.setItem('GRGS_RATINGS', JSON.stringify(ratings));
+  saveProducts();
+  renderProducts();
+  document.getElementById('status').innerText='🔥 BERHASIL! 6 produk HABIS ditambahkan - total sekarang '+products.length+' produk!';
+  alert('🔥 SUKSES BOS! 6 produk HABIS 100% sudah ditambahkan! Web lu sekarang '+products.length+' produk - keliatan RAME & LARIS!');
+}
+
+function renderProducts(){
+  document.getElementById('pc').innerText=products.length;
+  document.getElementById('pc2').innerText=products.length;
+  let jual=products.filter(p=>Object.values(p.stock).reduce((a,b)=>a+b,0)>0).length;
+  let habis=products.filter(p=>Object.values(p.stock).reduce((a,b)=>a+b,0)==0).length;
+  let totalTerjual=products.reduce((a,b)=>a+(b.sold||0),0);
+  document.getElementById('statJual').innerText=jual;
+  document.getElementById('statHabis').innerText=habis;
+  document.getElementById('statTotalTerjual').innerText=totalTerjual;
+  let sel=document.getElementById('newRatingProduct');if(sel){sel.innerHTML='';products.forEach(p=>{let o=document.createElement('option');o.value=p.id;o.textContent=p.name;sel.appendChild(o);});}
+  let pl=document.getElementById('productList');pl.innerHTML='';
+  products.forEach((p,idx)=>{
+    let total=Object.values(p.stock).reduce((a,b)=>a+b,0);
+    let percent=Math.round((p.sold/(p.initial||20))*100);
+    let isHabis=total==0;
+    let imgs=p.images||[p.img];
+    let el=document.createElement('div');el.className='border-2 rounded-[16px] p-4 '+(isHabis?'bg-red-50 border-red-300':'bg-[#fafafa]');
+    el.innerHTML=`<div class="flex justify-between"><div class="flex gap-2 items-center"><input id="pid_${idx}" value="${p.id}" class="font-mono text-[10px] font-bold bg-white border px-2 py-1 rounded w-[120px]"><span class="text-[9px] ${isHabis?'bg-red-600':'bg-black'} text-white px-2 py-1 rounded-full font-bold">${isHabis?'🔥 HABIS 100% TERJUAL':'SISA '+total+' | '+percent+'%'}</span>${isHabis?'<span class="text-[8px] bg-white border px-2 py-1 rounded-full">ARCHIVE</span>':''}</div><button onclick="delProduct(${idx})" class="text-red-500 text-[10px] font-bold">HAPUS</button></div>
+    <input id="pname_${idx}" value="${p.name}" class="w-full border rounded-full px-3 py-2.5 mt-3 text-[13px] font-bold bg-white">
+    <div class="grid grid-cols-3 gap-2 mt-3"><div><label class="text-[9px] font-bold">HARGA</label><input id="pprice_${idx}" type="number" value="${p.price}" class="w-full border rounded-full px-2 py-2.5 text-[12px] font-bold bg-white"></div><div><label class="text-[9px] font-bold">TERJUAL</label><input id="psold_${idx}" type="number" value="${p.sold}" class="w-full border rounded-full px-2 py-2.5 text-[12px] font-bold ${isHabis?'bg-red-100':''}"></div><div><label class="text-[9px] font-bold">AWAL</label><input id="pinitial_${idx}" type="number" value="${p.initial}" class="w-full border rounded-full px-2 py-2.5 text-[12px] font-bold bg-white"></div></div>
+    <div class="grid grid-cols-2 gap-2 mt-2"><div><label class="text-[9px]">FOTO 1 DEPAN</label><input id="pimg_${idx}" value="${p.img}" class="w-full border rounded-full px-3 py-2 text-[11px] bg-white"></div><div><label class="text-[9px]">FOTO 2 BELAKANG</label><input id="pimg2_${idx}" value="${imgs[1]||''}" class="w-full border rounded-full px-3 py-2 text-[11px] bg-white"></div></div>
+    <div class="grid grid-cols-4 gap-2 mt-2"><div><label class="text-[9px]">S</label><input id="ps_${idx}" type="number" value="${p.stock.S||0}" class="w-full border rounded-full py-2.5 text-center text-[12px] font-bold bg-white"></div><div><label class="text-[9px]">M</label><input id="pm_${idx}" type="number" value="${p.stock.M||0}" class="w-full border rounded-full py-2.5 text-center text-[12px] font-bold bg-white"></div><div><label class="text-[9px]">L</label><input id="pl_${idx}" type="number" value="${p.stock.L||0}" class="w-full border rounded-full py-2.5 text-center text-[12px] font-bold bg-white"></div><div><label class="text-[9px]">XL</label><input id="pxl_${idx}" type="number" value="${p.stock.XL||0}" class="w-full border rounded-full py-2.5 text-center text-[12px] font-bold bg-white"></div></div>
+    <div class="mt-2"><div class="w-full h-[6px] bg-gray-200 rounded-full overflow-hidden"><div class="${percent>=90?'bg-red-600':'bg-black'} h-full" style="width:${percent}%"></div></div><p class="text-[9px] mt-1 opacity-50">${percent}% - ${isHabis?'HABIS ARCHIVE - tetep tampil biar rame':total+' sisa'}</p></div>
+    <button onclick="saveProduct(${idx})" class="w-full ${isHabis?'bg-red-600':'bg-black'} text-white py-3 rounded-full text-[11px] font-bold mt-3">💾 SIMPAN ${isHabis?'(ARCHIVE HABIS)':''}</button>`;
+    pl.appendChild(el);
+  });
+}
+function saveProduct(i){
+  products[i].id=document.getElementById('pid_'+i).value.trim();
+  products[i].name=document.getElementById('pname_'+i).value;
+  products[i].price=parseInt(document.getElementById('pprice_'+i).value)||0;
+  products[i].sold=parseInt(document.getElementById('psold_'+i).value)||0;
+  products[i].initial=parseInt(document.getElementById('pinitial_'+i).value)||20;
+  let img1=document.getElementById('pimg_'+i).value.trim();
+  let img2=document.getElementById('pimg2_'+i).value.trim();
+  products[i].img=img1;
+  products[i].images=img2?[img1,img2]:[img1];
+  products[i].stock.S=parseInt(document.getElementById('ps_'+i).value)||0;
+  products[i].stock.M=parseInt(document.getElementById('pm_'+i).value)||0;
+  products[i].stock.L=parseInt(document.getElementById('pl_'+i).value)||0;
+  products[i].stock.XL=parseInt(document.getElementById('pxl_'+i).value)||0;
+  saveProducts();renderProducts();
+  document.getElementById('status').innerText='✅ '+products[i].name+' tersimpan!';
+}
+function delProduct(i){if(confirm('Hapus '+products[i].name+'?')){products.splice(i,1);saveProducts();renderProducts();}}
+function addProduct(){products.push({id:"BARU_"+Date.now(),name:"PRODUK BARU",price:135000,img:"depan.jpg",images:["depan.jpg","belakang.jpg"],stock:{S:5,M:5,L:5,XL:0},sold:0,initial:20});saveProducts();renderProducts();}
+function renderRatings(){
+  let sel=document.getElementById('newRatingProduct');if(sel){sel.innerHTML='';products.forEach(p=>{let o=document.createElement('option');o.value=p.id;o.textContent=p.name;sel.appendChild(o);});}
+  let list=document.getElementById('ratingList');list.innerHTML='';
+  products.forEach(p=>{
+    let revs=ratings[p.id]||[];
+    let avg=revs.length?(revs.reduce((a,b)=>a+b.star,0)/revs.length).toFixed(1):'5.0';
+    let div=document.createElement('div');div.className='border rounded-[12px] p-4 mb-3';
+    div.innerHTML=`<p class="font-bold text-[12px]">${p.name} - ⭐ ${avg} (${revs.length})</p><div class="mt-2 space-y-1">${revs.map((r,i)=>`<div class="bg-gray-50 p-2 rounded text-[10px] flex justify-between"><div><b>${r.name}</b> - ${'⭐'.repeat(r.star)}<br>${r.comment}</div><button onclick="delRating('${p.id}',${i})" class="text-red-500">HAPUS</button></div>`).join('')||'<p class="text-[10px] opacity-40">Belum ada</p>'}</div>`;
+    list.appendChild(div);
+  });
+}
+function addManualRating(){let pid=document.getElementById('newRatingProduct').value;let star=parseInt(document.getElementById('newRatingStar').value);let name=document.getElementById('newRatingName').value.trim();let comment=document.getElementById('newRatingComment').value.trim();if(!name||!comment)return alert('Isi!');if(!ratings[pid])ratings[pid]=[];ratings[pid].push({name,star,comment,date:new Date().toISOString().slice(0,10)});localStorage.setItem('GRGS_RATINGS', JSON.stringify(ratings));document.getElementById('newRatingName').value='';document.getElementById('newRatingComment').value='';renderRatings();}
+function delRating(pid,i){ratings[pid].splice(i,1);localStorage.setItem('GRGS_RATINGS', JSON.stringify(ratings));renderRatings();}
+
+function downloadNewIndex(){
+  for(let i=0;i<products.length;i++){if(document.getElementById('pid_'+i))saveProduct(i);}
+  saveOngkir();
+  let wa=document.getElementById('wa').value;
+  let rek_bri=document.getElementById('rek_bri').value;
+  let nama_bri=document.getElementById('nama_bri').value;
+  let rek_seabank=document.getElementById('rek_seabank').value;
+  let nama_seabank=document.getElementById('nama_seabank').value;
+  let heroImg=document.getElementById('heroImg').value;
+  let running=document.getElementById('running').value;
+  let heroTitle1=document.getElementById('heroTitle1').value;
+  let heroTitle2=document.getElementById('heroTitle2').value;
+  let productsObj={};products.forEach(p=>{productsObj[p.id]={name:p.name,price:p.price,img:p.img,images:p.images||[p.img],stock:p.stock,sold:p.sold,initial:p.initial}});
+  let ratingsData=localStorage.getItem('GRGS_RATINGS')||'{}';
+
+  let html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GRGS - ${heroTitle1} ${heroTitle2}</title><script src="https://cdn.tailwindcss.com"><\/script><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Bebas+Neue&display=swap" rel="stylesheet"><style>.serif{font-family:'Instrument Serif',serif}.bebas{font-family:'Bebas Neue',sans-serif}.marquee{animation:marquee 25s linear infinite;display:inline-flex;white-space:nowrap}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.size-btn.active{background:black;color:white}<\/style></head><body class="bg-white">
+<script>const NO_WA="${wa}";const REK_BRI="${rek_bri}";const NAMA_BRI="${nama_bri}";const REK_SEABANK="${rek_seabank}";const NAMA_SEABANK="${nama_seabank}";const PRODUCTS=${JSON.stringify(productsObj)};const ONGKIR=${JSON.stringify(ongkir)};const INITIAL_RATINGS=${ratingsData};<\/script>
+<div class="bg-black text-white py-2 overflow-hidden"><div class="marquee text-[11px] tracking-widest font-bold"><span class="mx-10">✦ ${running} ✦</span><span class="mx-10">✦ ${running} ✦</span></div></div>
+<header class="sticky top-0 z-40 bg-white border-b flex justify-between items-center px-6 py-4"><span class="font-black">GRGS</span><button onclick="document.getElementById('cart').classList.remove('hidden')" class="border border-black px-5 py-2 rounded-full text-[11px] font-bold">CART <span id="cartCount">0</span></button></header>
+<section class="max-w-[1300px] mx-auto px-4 py-12"><div class="text-center mb-8"><h2 class="bebas text-[44px]">SHOP COLLECTION</h2><p class="text-[11px] opacity-50">⭐ RATING 4.9/5 • ${products.length} PRODUK • ${products.reduce((a,b)=>a+(b.sold||0),0)}+ TERJUAL</p></div><div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div></section>
+<div id="cart" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute right-0 top-0 h-full w-[92%] md:w-[420px] bg-white p-6 flex flex-col"><div class="flex justify-between"><h3 class="bebas text-[28px]">CART</h3><button onclick="document.getElementById('cart').classList.add('hidden')">✕</button></div><div id="cartItems" class="flex-1 py-4 overflow-auto border-t mt-4"></div><div class="border-t pt-4"><div class="flex justify-between font-bold text-[16px]"><span>TOTAL</span><span id="cartTotal">Rp 0</span></div><button onclick="openCheckout()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">CHECKOUT →</button></div></div></div>
+<div id="checkoutModal" class="fixed inset-0 z-[110] hidden"><div class="absolute inset-0 bg-black/70" onclick="this.parentElement.classList.add('hidden')"></div><div class="absolute bottom-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-white w-full md:w-[460px] p-6 md:rounded-[20px] max-h-[95vh] overflow-auto"><h3 class="bebas text-[28px]">CHECKOUT</h3><input id="custName" placeholder="Nama *" class="w-full border p-3 mt-4 text-[13px] rounded-full"><input id="custWa" placeholder="WA *" class="w-full border p-3 mt-2 text-[13px] rounded-full"><textarea id="custAddr" placeholder="Alamat *" class="w-full border p-3 mt-2 text-[13px] rounded-[16px] h-[60px]"></textarea><select id="shipMethod" onchange="updateCart()" class="w-full border p-3 mt-2 text-[12px] rounded-full"></select><div class="mt-4"><div onclick="selectPayment('BRI')" id="pay_BRI" class="payment-method border-2 rounded-[12px] p-3 cursor-pointer"><p class="font-bold text-[12px]">BRI - ${nama_bri}</p><p class="text-[11px] font-mono">${rek_bri}</p></div><div onclick="selectPayment('SEABANK')" id="pay_SEABANK" class="payment-method border-2 rounded-[12px] p-3 cursor-pointer mt-2"><p class="font-bold text-[12px]">SeaBank - ${nama_seabank}</p><p class="text-[11px] font-mono">${rek_seabank}</p></div></div><div id="checkoutSummary" class="bg-gray-100 p-3 text-[11px] mt-3 rounded-[12px]"></div><button onclick="processPayment()" class="w-full bg-black text-white py-4 rounded-full mt-4 text-[11px] font-bold">LANJUT →</button></div></div>
+<div id="paymentModal" class="fixed inset-0 z-[120] hidden bg-white overflow-auto"><div class="max-w-[460px] mx-auto p-6"><h2 id="payTotal" class="bebas text-[40px]">Rp 0</h2><div id="payDetails" class="mt-4"></div><div class="mt-4"><input type="file" id="buktiFile" accept="image/*" class="hidden" onchange="previewBukti(this)"><button onclick="document.getElementById('buktiFile').click()" class="w-full border-2 border-dashed border-black rounded-[12px] p-6">📸 UPLOAD BUKTI</button><div id="buktiPreview" class="hidden mt-3"><img id="buktiImg" class="w-full rounded-[12px] border"></div></div><button onclick="confirmPayment()" class="w-full bg-black text-white py-4 rounded-full mt-6 font-black">✅ SUDAH TRANSFER + UPLOAD</button></div></div>
+<div id="successModal" class="fixed inset-0 z-[130] hidden bg-white"><div class="max-w-[460px] mx-auto min-h-screen p-6 flex flex-col items-center justify-center text-center"><h2 class="bebas text-[30px]">MENUNGGU VERIFIKASI!</h2><div id="successDetails" class="bg-gray-100 p-4 rounded-[12px] mt-6 text-[11px] w-full"></div><button onclick="location.reload()" class="w-full bg-black text-white py-4 rounded-full mt-8">KEMBALI KE TOKO</button></div></div>
+<script>
+let selected={},cart=[],selectedPayment='',currentOrder=null,buktiBase64='',currentImgIdx={};
+const shipSel=document.getElementById('shipMethod');Object.entries(ONGKIR).forEach(([n,h])=>{let o=document.createElement('option');o.value=n;o.textContent=n+" - Rp "+h.toLocaleString('id-ID');shipSel.appendChild(o);});
+function getOngkir(){return ONGKIR[shipSel.value]||0;}
+function selectPayment(m){selectedPayment=m;document.querySelectorAll('.payment-method').forEach(el=>el.classList.remove('active'));}
+function getStoredRatings(){try{return JSON.parse(localStorage.getItem('GRGS_RATINGS')||JSON.stringify(INITIAL_RATINGS))}catch(e){return INITIAL_RATINGS}}
+function renderProductsWeb(){
+  let g=document.getElementById('productGrid');g.innerHTML='';
+  let allRatings=getStoredRatings();
+  Object.keys(PRODUCTS).forEach(id=>{
+    let p=PRODUCTS[id];let revs=allRatings[id]||[];let avg=revs.length?(revs.reduce((a,b)=>a+b.star,0)/revs.length).toFixed(1):'5.0';
+    let totalSisa=Object.values(p.stock).reduce((a,b)=>a+b,0);let totalAwal=p.initial||20;let terjual=p.sold||0;let percent=Math.round((terjual/totalAwal)*100);
+    let isHabis=totalSisa==0;
+    let badgeText=isHabis?'🔥 HABIS 100% TERJUAL':percent+'% TERJUAL';
+    let badgeColor=isHabis?'bg-red-600':'bg-black';
+    let barColor=isHabis?'bg-red-600':'bg-black';
+    let imgs=p.images||[p.img];
+    let btnText=isHabis?'🔥 HABIS - LIHAT LAIN':'ADD TO CART';
+    let btnClass=isHabis?'bg-gray-300 text-gray-500':'bg-black text-white';
+    let btnAction=isHabis?"alert('Produk HABIS! Cek yang masih ada ya 🔥')":"addToCart('"+id+"')";
+    g.innerHTML+='<div class="border rounded-[20px] overflow-hidden bg-white '+(isHabis?'opacity-90':'')+'"><div class="aspect-[4/5] bg-[#fafafa] relative"><img id="mainImg-'+id+'" src="'+imgs[0]+'" class="w-full h-full object-contain p-8"><div class="absolute top-4 left-4"><span class="'+badgeColor+' text-white text-[9px] px-3 py-1.5 rounded-full font-bold">'+badgeText+'</span></div><div class="absolute top-4 right-4 bg-white px-2 py-1 rounded-full text-[9px] font-bold border">⭐ '+avg+'</div>'+(imgs.length>1?'<button onclick="prevImg(\\''+id+'\\')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 text-white w-7 h-7 rounded-full">‹</button><button onclick="nextImg(\\''+id+'\\')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 text-white w-7 h-7 rounded-full">›</button><div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">'+imgs.map((_,idx)=>'<div id="dot-'+id+'-'+idx+'" class="w-1.5 h-1.5 rounded-full '+(idx==0?'bg-black':'bg-black/30')+'"></div>').join('')+'</div>':'')+'</div>'+(imgs.length>1?'<div class="flex gap-2 p-2 border-t">'+imgs.map((im,idx)=>'<img src="'+im+'" onclick="setImg(\\''+id+'\\','+idx+')" id="thumb-'+id+'-'+idx+'" class="w-12 h-12 object-cover rounded-[8px] border-2 '+(idx==0?'border-black':'border-gray-200')+' cursor-pointer">').join('')+'</div>':'')+'<div class="p-5"><h4 class="font-bold text-[13px]">'+p.name+'</h4><p class="font-black text-[14px] mt-1">Rp '+p.price.toLocaleString('id-ID')+'</p><p class="text-[10px] opacity-60 mt-1">Sisa '+totalSisa+' • Terjual '+terjual+'</p><div class="w-full h-[6px] bg-gray-200 rounded-full mt-2"><div class="'+barColor+' h-full" style="width:'+percent+'%"></div></div><div class="flex gap-2 mt-3" id="sizes-'+id+'"></div><button onclick="'+btnAction+'" class="w-full mt-3 '+btnClass+' py-3.5 rounded-full text-[11px] font-bold">'+btnText+'</button></div></div>';
+  });renderSizesWeb();
+}
+function setImg(id,idx){let imgs=PRODUCTS[id].images||[PRODUCTS[id].img];currentImgIdx[id]=idx;document.getElementById('mainImg-'+id).src=imgs[idx];imgs.forEach((_,i)=>{let d=document.getElementById('dot-'+id+'-'+i);let t=document.getElementById('thumb-'+id+'-'+i);if(d)d.className='w-1.5 h-1.5 rounded-full '+(i==idx?'bg-black':'bg-black/30');if(t)t.className='w-12 h-12 object-cover rounded-[8px] border-2 '+(i==idx?'border-black':'border-gray-200')+' cursor-pointer';});}
+function nextImg(id){let imgs=PRODUCTS[id].images||[PRODUCTS[id].img];let c=currentImgIdx[id]||0;setImg(id,(c+1)%imgs.length);}
+function prevImg(id){let imgs=PRODUCTS[id].images||[PRODUCTS[id].img];let c=currentImgIdx[id]||0;setImg(id,(c-1+imgs.length)%imgs.length);}
+function renderSizesWeb(){Object.keys(PRODUCTS).forEach(id=>{let cont=document.getElementById('sizes-'+id);if(!cont)return;cont.innerHTML='';Object.keys(PRODUCTS[id].stock).forEach(s=>{let q=PRODUCTS[id].stock[s];let b=document.createElement('button');b.textContent=s+' ('+q+')';b.className='size-btn border rounded-full px-3 h-9 text-[11px] font-bold '+(q==0?'opacity-20':'');if(q==0)b.disabled=true;b.onclick=()=>{selected[id]=s;cont.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');};cont.appendChild(b);});});}
+function addToCart(id){let s=selected[id];if(!s)return alert('Pilih size!');if(PRODUCTS[id].stock[s]<=0)return alert('Habis!');cart.push({id,size:s,price:PRODUCTS[id].price,name:PRODUCTS[id].name});PRODUCTS[id].stock[s]--;updateCart();document.getElementById('cart').classList.remove('hidden');renderProductsWeb();}
+function updateCart(){document.getElementById('cartCount').textContent=cart.length;let sub=cart.reduce((a,b)=>a+b.price,0),ong=cart.length>0?getOngkir():0,tot=sub+ong;document.getElementById('cartTotal').textContent='Rp '+tot.toLocaleString('id-ID');document.getElementById('cartItems').innerHTML=cart.map((it,idx)=>'<div class="flex justify-between py-3 border-b text-[12px]"><div><b>'+it.name+'</b><br>Size '+it.size+'</div><div>Rp '+it.price.toLocaleString('id-ID')+'<br><button onclick="removeItem('+idx+')" class="text-red-500 text-[10px]">HAPUS</button></div></div>').join('');document.getElementById('checkoutSummary').innerHTML=cart.map(i=>'• '+i.name+' '+i.size).join('<br>')+'<br><br>TOTAL Rp '+tot.toLocaleString('id-ID');}
+function removeItem(i){PRODUCTS[cart[i].id].stock[cart[i].size]++;cart.splice(i,1);updateCart();renderProductsWeb();}
+function openCheckout(){if(!cart.length)return;document.getElementById('cart').classList.add('hidden');document.getElementById('checkoutModal').classList.remove('hidden');updateCart();}
+function getOrders(){try{return JSON.parse(localStorage.getItem('GRGS_ORDERS')||'[]')}catch(e){return []}}
+function saveOrders(o){localStorage.setItem('GRGS_ORDERS', JSON.stringify(o))}
+function previewBukti(input){if(input.files&&input.files[0]){let r=new FileReader();r.onload=e=>{buktiBase64=e.target.result;document.getElementById('buktiImg').src=buktiBase64;document.getElementById('buktiPreview').classList.remove('hidden');};r.readAsDataURL(input.files[0]);}}
+function processPayment(){let n=document.getElementById('custName').value,w=document.getElementById('custWa').value,a=document.getElementById('custAddr').value;if(!n||!w||!a)return alert('Lengkapi!');if(!selectedPayment)return alert('Pilih BANK!');let sub=cart.reduce((a,b)=>a+b.price,0),ong=getOngkir(),tot=sub+ong;let orderId='GRGS'+Date.now().toString().slice(-6);currentOrder={id:orderId,name:n,wa:w,addr:a,ship:shipSel.value,sub,ong,tot,cart:[...cart],method:selectedPayment,time:new Date().toISOString()};document.getElementById('checkoutModal').classList.add('hidden');document.getElementById('paymentModal').classList.remove('hidden');document.getElementById('payTotal').textContent='Rp '+tot.toLocaleString('id-ID');let rek=selectedPayment=='BRI'?'${rek_bri}':'${rek_seabank}';document.getElementById('payDetails').innerHTML='<div class="border-2 border-black rounded-[16px] p-5"><p class="font-bold">'+selectedPayment+' - '+rek+'</p><div class="bg-yellow-100 p-3 rounded-[10px] mt-3">Transfer tepat <b>Rp '+tot.toLocaleString('id-ID')+'</b></div></div>';buktiBase64='';document.getElementById('buktiPreview').classList.add('hidden');}
+function confirmPayment(){if(!currentOrder)return;if(!buktiBase64)return alert('Upload bukti!');currentOrder.status='waiting';currentOrder.bukti=buktiBase64;let orders=getOrders();orders.push(currentOrder);saveOrders(orders);document.getElementById('paymentModal').classList.add('hidden');document.getElementById('successModal').classList.remove('hidden');document.getElementById('successDetails').innerHTML='Order '+currentOrder.id+'<br>Total Rp '+currentOrder.tot.toLocaleString('id-ID')+'<br><img src="'+buktiBase64+'" class="w-full rounded-[10px] mt-2">';}
+renderProductsWeb();
+<\/script></body></html>`;
+
+  let blob=new Blob([html],{type:'text/html'});
+  let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();
+  document.getElementById('status').innerText='✅ DOWNLOAD BERHASIL - '+products.length+' produk - '+products.filter(p=>Object.values(p.stock).reduce((a,b)=>a+b,0)==0).length+' HABIS!';
+}
+renderProducts();renderRatings();renderOrders();renderOngkir();showTab('products');
+</script></body></html>
