@@ -1,46 +1,145 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GREGARIOUS CLUB®</title><script src="https://cdn.tailwindcss.com"></script><style>.font-bebas{font-family:Impact,sans-serif}#drawer{transform:translateX(-100%);transition:.3s}#drawer.open{transform:translateX(0)}@keyframes mar{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.mar{animation:mar 20s linear infinite;display:flex}</style></head><body class="bg-[#f5f5f0] text-black">
-<header class="bg-white sticky top-0 z-40 flex justify-between items-center px-4 py-3 border-b-2 border-black"><button onclick="document.getElementById('drawer').classList.toggle('open')" class="w-8 h-8 border-2 border-black rounded-full font-black">☰</button><div class="border-2 border-black rounded-[50%] px-5 py-1 font-black">GRGS</div><button onclick="openCart()" class="font-black">🛒<span id="cartC" class="bg-black text-white rounded-full px-1.5 text-[10px]">0</span></button></header>
-<div id="drawer" class="fixed inset-0 z-[100] flex"><div class="bg-white w-[280px] h-full p-6 border-r-2 border-black"><button onclick="document.getElementById('drawer').classList.remove('open')" class="bg-black text-white w-8 h-8 rounded-full">✕</button><a href="#shop" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('shop').scrollIntoView({behavior:'smooth'})" class="block mt-8 border-2 border-black rounded-full px-5 py-3 font-black">SHOP COLLECTION →</a></div><div class="flex-1 bg-black/50" onclick="document.getElementById('drawer').classList.remove('open')"></div></div>
-<div class="bg-black text-white py-2 overflow-hidden"><div class="mar flex"><span class="text-[11px] font-black px-4 whitespace-nowrap">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • BANDUNG 40614 • FOREVER YOUNG •&nbsp;</span><span class="text-[11px] font-black px-4 whitespace-nowrap">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • BANDUNG 40614 • FOREVER YOUNG •&nbsp;</span></div></div>
-<section class="relative h-[80vh] bg-black text-white flex items-center justify-center overflow-hidden"><img src="hero.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60"><div class="relative z-10 text-center"><div class="border-2 border-white rounded-[50%] px-7 py-2 font-black text-[20px] mx-auto w-fit">GRGS</div><p class="text-[12px] tracking-[0.3em] mt-6">GREGARIOUS CLUB</p><h1 class="font-bebas text-[70px] leading-[0.9] mt-4">UNITED<br>AS ONE</h1><button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" class="mt-6 border-2 border-white rounded-full px-12 py-3 font-bold hover:bg-white hover:text-black">SHOP NOW →</button></div></section>
-<section id="shop" class="p-4 max-w-[1200px] mx-auto"><h2 class="font-black text-[22px]">SHOP COLLECTION</h2><p class="text-[11px] opacity-60">10 PRODUK • ★4.9 • 558+ Ulasan • READY</p><div id="grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"></div></section>
-<section class="bg-white p-4 border-t-2 border-black"><h2 class="font-black">ULASAN ★4.9 • 558+</h2><div id="ulasan" class="grid md:grid-cols-3 gap-3 mt-3"></div></section>
-<div id="modal" class="fixed inset-0 bg-black/90 hidden z-50 p-3 flex items-center justify-center"><div class="bg-white rounded-[20px] max-w-[400px] w-full p-4"><div class="flex justify-between"><h3 id="mName" class="font-black"></h3><button onclick="modal.classList.add('hidden')" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div><img id="mImg" class="w-full h-[300px] object-cover rounded-[16px] mt-3 border-2 border-black"><p id="mPrice" class="font-black text-[18px] mt-2"></p><p class="text-[11px]">TERJUAL <span id="mSold" class="font-black"></span> • ★<span id="mRate"></span> • SISA <span id="mSisa" class="font-black"></span></p><div id="mSize" class="grid grid-cols-4 gap-2 mt-3"></div><button onclick="addCart()" class="w-full bg-black text-white py-3 rounded-full font-black mt-4">+ KERANJANG</button></div></div>
-<div id="cartM" class="fixed inset-0 bg-black/90 hidden z-[60] p-3 flex items-center justify-center"><div class="bg-white rounded-[20px] max-w-[400px] w-full p-4"><h3 class="font-black">KERANJANG</h3><div id="cartI" class="mt-3 space-y-2"></div><input id="cName" placeholder="Nama" class="w-full border-2 border-black rounded-full px-4 py-2 mt-3"><input id="cWA" placeholder="WA" class="w-full border-2 border-black rounded-full px-4 py-2 mt-2"><p id="cTotal" class="font-black text-center bg-black text-white py-2 rounded-full mt-3"></p><button onclick="checkout()" class="w-full bg-[#FFD700] border-2 border-black py-3 rounded-full font-black mt-2">CHECKOUT WA</button><button onclick="cartM.classList.add('hidden')" class="w-full border-2 border-black py-2 rounded-full mt-2">TUTUP</button></div></div>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GREGARIOUS CLUB® - V17 FULL ADMIN CONNECTED</title><script src="https://cdn.tailwindcss.com"></script><style>.font-bebas{font-family:Impact,Arial Black,sans-serif;letter-spacing:1px}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.marquee{animation:marquee 18s linear infinite;display:flex;white-space:nowrap}#drawer{transform:translateX(-100%);transition:0.3s}#drawer.open{transform:translateX(0)}</style></head><body class="bg-black text-white">
+
+<!-- HEADER -->
+<header class="bg-white text-black sticky top-0 z-40 flex justify-between items-center px-4 py-3 border-b-2 border-black">
+<button onclick="toggleDrawer()" class="w-8 h-8 border-2 border-black rounded-full font-black flex items-center justify-center">☰</button>
+<div id="headerLogo" class="border-2 border-black rounded-[50%] px-5 py-1.5 font-black text-[14px] tracking-widest">GRGS</div>
+<button onclick="openCart()" class="font-black text-[20px] relative">🛒<span id="cartCountHead" class="absolute -top-1 -right-2 bg-black text-white text-[10px] rounded-full px-1.5">0</span></button>
+</header>
+
+<!-- DRAWER -->
+<div id="drawer" class="fixed inset-0 z-[100] flex"><div class="bg-white text-black w-[300px] h-full p-6 border-r-2 border-black">
+<div class="flex justify-between items-center"><div id="drawerLogo" class="border-2 border-black rounded-[50%] px-4 py-1 font-black text-[12px]">GRGS</div><button onclick="toggleDrawer()" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div>
+<nav class="mt-8 space-y-2">
+<a href="#" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'});toggleDrawer()" class="block border-2 border-black rounded-full px-5 py-3 font-black text-[13px]">SHOP COLLECTION →</a>
+<a href="#" onclick="document.getElementById('ulasan').scrollIntoView({behavior:'smooth'});toggleDrawer()" class="block border-2 border-black rounded-full px-5 py-3 font-bold text-[12px]">ULASAN ★<span id="menuRating">4.9</span> • <span id="menuUlasan">558</span></a>
+</nav>
+<div class="mt-6 bg-[#f5f5f0] border-2 border-black rounded-[16px] p-4">
+<p id="menuBrand" class="font-black text-[11px]">GREGARIOUS CLUB</p>
+<p id="menuAbout" class="text-[11px] opacity-60 mt-1">Bandung 40614 • Forever young</p>
+<p class="text-[10px] mt-3 font-bold">WA: <span id="menuWA">0881023595180</span></p>
+<p class="text-[9px] opacity-40 mt-2">ADMIN CONNECTED • V17 FULL</p>
+</div>
+</div><div class="flex-1 bg-black/60" onclick="toggleDrawer()"></div></div>
+
+<!-- RUNNING TEXT - NYAMBUNG ADMIN! -->
+<div class="bg-black text-white py-2.5 overflow-hidden border-y border-white/20"><div class="marquee"><span id="marqueeText" class="text-[11px] font-black tracking-widest px-4">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • BANDUNG 40614 •</span><span id="marqueeText2" class="text-[11px] font-black tracking-widest px-4">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • BANDUNG 40614 •</span></div></div>
+
+<!-- HERO - NYAMBUNG ADMIN! -->
+<section class="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<img id="heroImgEl" src="hero.jpg" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-black/60"></div>
+<div class="relative z-10 text-center px-6 max-w-[420px]">
+<div id="heroLogoEl" class="mx-auto border-2 border-white rounded-[50%] px-7 py-2.5 font-black text-[18px] tracking-widest w-fit bg-black/30 backdrop-blur">GRGS</div>
+<p id="brandEl" class="text-[12px] tracking-[0.35em] mt-7 font-bold">GREGARIOUS CLUB</p>
+<p id="taglineEl" class="text-[12px] mt-2 opacity-80 leading-[1.5]"><i>We're not just a brand.<br>We're a community.</i></p>
+<h1 class="font-bebas text-[68px] leading-[0.85] mt-8"><span id="heroTitle1El">UNITED</span><br><span id="heroTitle2El">AS ONE</span></h1>
+<button id="heroBtnEl" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" class="mt-8 border-2 border-white rounded-full px-12 py-3.5 text-[13px] font-bold tracking-widest hover:bg-white hover:text-black transition">SHOP NOW</button>
+</div>
+</section>
+
+<!-- SHOP - NYAMBUNG ADMIN! SISA • TERJUAL • RATING • SISA DIKIT! -->
+<section id="shop" class="bg-[#f5f5f0] text-black p-4"><div class="max-w-[1200px] mx-auto">
+<div class="flex justify-between items-end"><div><h2 id="shopTitleEl" class="font-black text-[20px]">SHOP COLLECTION</h2><p id="shopSubEl" class="text-[11px] opacity-60 mt-1">10 PRODUK • FILE ASLI • ★<span id="ratingEl">4.9</span> • <span id="ulasanEl">558</span> Ulasan • <span id="terjualEl">500</span> Terjual • <span id="apiStatus" class="font-black bg-black text-white px-2 py-0.5 rounded-full text-[9px]">ADMIN CONNECTED</span></p></div></div>
+<div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5"></div>
+</div></section>
+
+<!-- ULASAN KOMENTAR - NYAMBUNG ADMIN! -->
+<section id="ulasan" class="bg-white text-black p-4 border-t-2 border-black"><div class="max-w-[1200px] mx-auto"><div class="flex justify-between items-center"><h2 class="font-black text-[16px]">ULASAN CUSTOMER ★<span id="ulasanRating">4.9</span>/5 • <span id="ulasanTotal">558</span>+</h2><span class="bg-[#FFD700] border-2 border-black px-3 py-1 rounded-full text-[10px] font-black">MANUAL DARI ADMIN</span></div><div id="ulasanList" class="grid md:grid-cols-3 gap-3 mt-4"></div></div></section>
+
+<!-- ABOUT - NYAMBUNG ADMIN! -->
+<section class="bg-black text-white p-6 text-center border-t border-white/10"><h2 id="aboutTitleEl" class="font-black text-[14px]">UNITED AS ONE - GREGARIOUS CLUB</h2><p id="aboutDescEl" class="text-[11px] opacity-60 mt-2 max-w-[500px] mx-auto">Brand lokal Bandung 40614. Forever young.</p><p id="marqueeBottomEl" class="text-[9px] opacity-30 mt-3 tracking-widest">BANDUNG • FOREVER YOUNG • ADMIN V17 FULL</p><p class="text-[8px] opacity-20 mt-2">WA: <span id="footerWA">0881023595180</span> • BRI: <span id="footerBRI">074901024253504</span></p></section>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="fixed inset-0 bg-black/90 hidden z-50 p-3 flex items-center justify-center"><div class="bg-white text-black rounded-[24px] max-w-[500px] w-full p-5 max-h-[90vh] overflow-auto border-2 border-black"><div class="flex justify-between"><h3 id="modalName" class="font-black text-[13px]"></h3><button onclick="closeModal()" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div><img id="modalImg" class="w-full h-[320px] object-cover rounded-[16px] mt-3 border-2 border-black"><div id="modalThumbs" class="flex gap-2 mt-2 flex-wrap"></div><p id="modalPrice" class="font-black text-[20px] mt-3"></p><p class="text-[11px]">TERJUAL <span id="modalTerjual" class="font-black"></span> • ★<span id="modalRating"></span> • SISA <span id="modalSisa" class="font-black"></span></p><p id="modalFiles" class="text-[8px] font-mono opacity-50 mt-1"></p><div class="mt-4"><p class="font-black text-[11px]">PILIH SIZE (jadi HITAM pas dipilih):</p><div id="sizeBtns" class="grid grid-cols-4 gap-2 mt-2"></div></div><button onclick="addToCart()" class="w-full bg-black text-white py-3.5 rounded-full font-black mt-5">+ KERANJANG</button></div></div>
+
+<!-- CART MODAL -->
+<div id="cartModal" class="fixed inset-0 bg-black/95 hidden z-[60] p-3 flex items-center justify-center"><div class="bg-white text-black rounded-[24px] max-w-[420px] w-full p-5 max-h-[95vh] overflow-auto border-2 border-black"><div class="flex justify-between"><h3 class="font-black">KERANJANG 🔒</h3><button onclick="closeCart()" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div><div id="cartItems" class="mt-3 space-y-2"></div><input id="custName" placeholder="Nama lengkap" class="w-full border-2 border-black rounded-full px-4 py-2.5 mt-4 text-[12px] font-bold"><input id="custWA" placeholder="WA 08xxx" class="w-full border-2 border-black rounded-full px-4 py-2.5 mt-2 text-[12px]"><select id="custOngkir" class="w-full border-2 border-black rounded-full px-4 py-2.5 mt-2 text-[12px] bg-white font-bold"></select><select id="payMethod" class="w-full border-2 border-black rounded-full px-4 py-2.5 mt-2 text-[12px] bg-white"><option value="BRI">BRI - 074901024253504</option><option value="SEABANK">SEABANK - 901100694312</option></select><div class="mt-3 bg-black text-white p-3 rounded-[16px]"><p class="text-[10px] font-black">📸 BUKTI TF (WAJIB ANTI PALSU):</p><input type="file" id="buktiFile" accept="image/*" class="w-full text-[11px] mt-2"><div id="previewBukti" class="hidden mt-2"><img id="imgPreview" class="w-full h-[120px] object-cover rounded-[12px] border-2 border-[#FFD700]"></div></div><p id="checkoutTotal" class="font-black text-center mt-3 bg-black text-white py-2.5 rounded-full"></p><button onclick="secureCheckout()" class="w-full bg-[#FFD700] border-2 border-black py-3.5 rounded-full font-black mt-3">🔒 CHECKOUT WA</button></div></div>
+
 <script>
-const PRODUCTS=[
-{id:"CROSS_BLACK",n:"CROSS TSHIRT - BLACK",p:145000,i:["cross_black.jpg"],s:{S:2,M:3,L:2,XL:1},sold:120,r:4.9},
-{id:"CROSS_WHITE",n:"CROSS TSHIRT - WHITE",p:145000,i:["cross_white.jpg"],s:{S:2,M:3,L:2,XL:1},sold:98,r:4.8},
-{id:"BABY_BLACK",n:"BABYTEE - BLACK",p:135000,i:["babytee_black.jpg"],s:{S:5,M:5,L:5,XL:2},sold:75,r:4.9},
-{id:"BABY_WHITE",n:"BABYTEE - WHITE",p:135000,i:["babytee_white.jpg"],s:{S:5,M:5,L:5,XL:2},sold:68,r:4.9},
-{id:"RICH_WP_NEW",n:"RICH BEFORE - WHITE PINK (NEW)",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:5,M:5,L:5,XL:5},sold:12,r:5.0},
-{id:"RICH_WG",n:"RICH BEFORE - WHITE GREY",p:155000,i:["richbefore_wg_front.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
-{id:"RICH_BG",n:"RICH BEFORE - BLACK GREY",p:155000,i:["richbefore_bg_front.jpg"],s:{S:2,M:3,L:2,XL:1},sold:45,r:4.8},
-{id:"RICH_BP",n:"RICH BEFORE - BLACK PINK",p:155000,i:["richbefore_bp_front.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
-{id:"RICH_WP_OLD",n:"RICH BEFORE - WHITE PINK",p:155000,i:["richbefore_wp_front.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
-{id:"FL_WHITE",n:"FUCKLOVE - WHITE",p:145000,i:["fucklove_white_front.jpg"],s:{S:3,M:3,L:3,XL:2},sold:40,r:4.9}
+let defaults=[
+{id:"CROSS_BLACK",n:"CROSS TSHIRT - BLACK",p:145000,i:["cross_black.jpg"],s:{S:2,M:3,L:2,XL:1},sold:120,init:150,r:4.9},
+{id:"CROSS_WHITE",n:"CROSS TSHIRT - WHITE",p:145000,i:["cross_white.jpg"],s:{S:2,M:3,L:2,XL:1},sold:98,init:120,r:4.8},
+{id:"BABY_BLACK",n:"BABYTEE - BLACK",p:135000,i:["babytee_black.jpg"],s:{S:5,M:5,L:5,XL:2},sold:75,init:100,r:4.9},
+{id:"BABY_WHITE",n:"BABYTEE - WHITE",p:135000,i:["babytee_white.jpg"],s:{S:5,M:5,L:5,XL:2},sold:68,init:100,r:4.9},
+{id:"RICH_WP_NEW",n:"RICH BEFORE - WHITE PINK (NEW)",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:5,M:5,L:5,XL:5},sold:12,init:50,r:5.0},
+{id:"RICH_WG",n:"RICH BEFORE - WHITE GREY",p:155000,i:["richbefore_wg_front.jpg","richbefore_wg_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
+{id:"RICH_BG",n:"RICH BEFORE - BLACK GREY",p:155000,i:["richbefore_bg_front.jpg","richbefore_bg_back.jpg"],s:{S:2,M:3,L:2,XL:1},sold:45,init:50,r:4.8},
+{id:"RICH_BP",n:"RICH BEFORE - BLACK PINK",p:155000,i:["richbefore_bp_front.jpg","richbefore_bp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
+{id:"RICH_WP_OLD",n:"RICH BEFORE - WHITE PINK",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
+{id:"FL_WHITE",n:"FUCKLOVE - WHITE",p:145000,i:["fucklove_white_front.jpg"],s:{S:3,M:3,L:3,XL:2},sold:40,init:60,r:4.9}
 ];
-const ULASAN=[{name:"Andi • Bandung",text:"Sablon mantep bos!",star:5},{name:"Rizky • Jakarta",text:"Size M pas",star:5},{name:"Dina • Surabaya",text:"Langganan 3x",star:4.9}];
-let cart=[];let sel=null,selSize=null;
-function render(){
-let g=document.getElementById('grid');g.innerHTML='';
-PRODUCTS.forEach((p,i)=>{
+let defaultOngkir=[{n:"BANDUNG - JNE OKE",p:10000},{n:"JABODETABEK - JNE REG",p:13000},{n:"JNE YES",p:18000}];
+let defaultUlasan=[{name:"Andi • Bandung",text:"Kualitas sablon mantep, bahan adem!",star:5,prod:"CROSS BLACK"},{name:"Rizky • Jakarta",text:"Pengiriman cepet, size pas M",star:5,prod:"RICH BEFORE"},{name:"Dina • Surabaya",text:"Udah 3x beli, langganan!",star:4.9,prod:"BABYTEE BLACK"}];
+
+let products;try{let p=JSON.parse(localStorage.getItem('GRGS_P'));if(Array.isArray(p)&&p.length>0)products=p;else throw 1;}catch(e){products=JSON.parse(JSON.stringify(defaults));}
+let cfg;try{cfg=JSON.parse(localStorage.getItem('GRGS_CFG'));if(!cfg||!cfg.headerLogo)throw 1;}catch(e){cfg={headerLogo:"GRGS",heroLogo:"GRGS",brand:"GREGARIOUS CLUB",tagline:"We're not just a brand.\nWe're a community.",heroImg:"hero.jpg",marquee:"★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • FOREVER YOUNG • BANDUNG 40614 •",heroTitle1:"UNITED",heroTitle2:"AS ONE",heroButton:"SHOP NOW",ratingAvg:"4.9",totalUlasan:"558",totalTerjual:"500",shopTitle:"SHOP COLLECTION",shopSub:"10 PRODUK • FILE ASLI • SLIDE DEPAN-BELAKANG",aboutTitle:"UNITED AS ONE - GREGARIOUS CLUB",aboutDesc:"Brand lokal Bandung 40614. Forever young.",marqueeBottom:"BANDUNG • FOREVER YOUNG",wa:"0881023595180",bri:"074901024253504",seabank:"901100694312"};}
+let ongkir;try{ongkir=JSON.parse(localStorage.getItem('GRGS_ONGKIR'));if(!Array.isArray(ongkir))throw 1;}catch(e){ongkir=defaultOngkir;}
+let ulasanData;try{ulasanData=JSON.parse(localStorage.getItem('GRGS_ULASAN'));if(!Array.isArray(ulasanData))throw 1;}catch(e){ulasanData=defaultUlasan;}
+
+let cart=JSON.parse(localStorage.getItem('GRGS_CART')||'[]');let sel=null,selSize=null,buktiBase64=null;
+
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');}
+
+function loadCfg(){
+try{
+document.getElementById('headerLogo').innerText=cfg.headerLogo||'GRGS';
+document.getElementById('drawerLogo').innerText=cfg.headerLogo||'GRGS';
+document.getElementById('heroLogoEl').innerText=cfg.heroLogo||'GRGS';
+document.getElementById('brandEl').innerText=cfg.brand||'GREGARIOUS CLUB';
+document.getElementById('menuBrand').innerText=cfg.brand||'GREGARIOUS CLUB';
+document.getElementById('taglineEl').innerHTML=(cfg.tagline||"We're not just a brand.\nWe're a community.").replace(/\n/g,'<br>');
+document.getElementById('heroImgEl').src=cfg.heroImg||'hero.jpg';
+let marq=cfg.marquee||'★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • BANDUNG 40614 •';
+document.getElementById('marqueeText').innerText=marq;
+document.getElementById('marqueeText2').innerText=marq;
+document.getElementById('heroTitle1El').innerText=cfg.heroTitle1||'UNITED';
+document.getElementById('heroTitle2El').innerText=cfg.heroTitle2||'AS ONE';
+document.getElementById('heroBtnEl').innerText=cfg.heroButton||'SHOP NOW';
+document.getElementById('shopTitleEl').innerText=cfg.shopTitle||'SHOP COLLECTION';
+document.getElementById('shopSubEl').innerHTML=(cfg.shopSub||'10 PRODUK • FILE ASLI')+' • ★<span id="ratingEl">'+(cfg.ratingAvg||'4.9')+'</span> • <span id="ulasanEl">'+(cfg.totalUlasan||'558')+'</span> Ulasan • <span id="terjualEl">'+(cfg.totalTerjual||'500')+'</span> Terjual';
+document.getElementById('aboutTitleEl').innerText=cfg.aboutTitle||'UNITED AS ONE';
+document.getElementById('aboutDescEl').innerText=cfg.aboutDesc||'Bandung 40614';
+document.getElementById('marqueeBottomEl').innerText=cfg.marqueeBottom||'BANDUNG';
+document.getElementById('menuRating').innerText=cfg.ratingAvg||'4.9';
+document.getElementById('menuUlasan').innerText=cfg.totalUlasan||'558';
+document.getElementById('menuAbout').innerText=cfg.aboutDesc||'Bandung 40614';
+document.getElementById('menuWA').innerText=cfg.wa||'0881023595180';
+document.getElementById('footerWA').innerText=cfg.wa||'0881023595180';
+document.getElementById('footerBRI').innerText=cfg.bri||'074901024253504';
+document.getElementById('ulasanRating').innerText=cfg.ratingAvg||'4.9';
+document.getElementById('ulasanTotal').innerText=cfg.totalUlasan||'558';
+document.getElementById('ratingEl').innerText=cfg.ratingAvg||'4.9';
+document.getElementById('ulasanEl').innerText=cfg.totalUlasan||'558';
+document.getElementById('terjualEl').innerText=cfg.totalTerjual||'500';
+document.getElementById('apiStatus').innerText='ADMIN CONNECTED • '+products.length+' PRODUK • V17 FULL';
+}catch(e){console.log('cfg error',e);}
+}
+
+function renderProducts(){
+let g=document.getElementById('productGrid');g.innerHTML='';
+products.forEach((p,i)=>{
 let tot=Object.values(p.s).reduce((a,b)=>a+b,0);
 let low=tot>0&&tot<=3;
 let habis=tot===0;
-let badge=habis?`HABIS • ★${p.r} • TERJUAL ${p.sold}`:low?`SISA ${tot} DIKIT! • ★${p.r} • TERJUAL ${p.sold}`:`SISA ${tot} • ★${p.r} • TERJUAL ${p.sold}`;
-let col=habis?'border-red-500':low?'border-yellow-500':'border-black';
-let bg=habis?'bg-red-600':low?'bg-yellow-400 text-black':'bg-black';
-g.innerHTML+=`<div class="bg-white rounded-[16px] border-2 ${col} p-2 cursor-pointer" onclick="openP(${i})"><div class="h-[200px] rounded-[12px] overflow-hidden bg-[#eee] relative border"><img src="${p.i[0]}" class="w-full h-full object-cover"><div class="absolute top-2 left-2 ${bg} text-white px-2 py-1 rounded-full text-[8px] font-black">${badge}</div></div><h3 class="font-black text-[10px] mt-2">${p.n}</h3><p class="font-black text-[12px]">Rp ${p.p.toLocaleString('id-ID')}</p></div>`;
+let badgeText=habis?`HABIS • ★${p.r} • TERJUAL ${p.sold}`:low?`SISA ${tot} DIKIT! • ★${p.r} • TERJUAL ${p.sold}`:`SISA ${tot} • ★${p.r} • TERJUAL ${p.sold}`;
+let borderColor=habis?'border-red-500':low?'border-yellow-400':'border-black';
+let badgeBg=habis?'bg-red-600':low?'bg-yellow-400 text-black border-2 border-black':'bg-black';
+g.innerHTML+=`<div class="bg-white rounded-[16px] border-2 ${borderColor} p-2 cursor-pointer hover:scale-[1.02] transition" onclick="openP(${i})"><div class="rounded-[12px] overflow-hidden h-[220px] bg-[#eee] relative border"><img src="${p.i[0]}" class="w-full h-full object-cover" onerror="this.src='cross_black.jpg'"><div class="absolute top-2 left-2 ${badgeBg} text-white px-2.5 py-1 rounded-full text-[8px] font-black">${badgeText}</div>${p.i[1]?'<div class="absolute top-2 right-2 bg-white border-2 border-black px-2 py-0.5 rounded-full text-[8px] font-black text-black">2 FOTO</div>':''}${low?'<div class="absolute bottom-2 left-2 right-2 bg-yellow-400 text-black text-center py-1 rounded-full text-[8px] font-black animate-pulse">⚠️ SISA DIKIT! BURUAN!</div>':''}</div><h3 class="font-black text-[10px] mt-2 text-black leading-tight">${p.n}</h3><p class="font-black text-[12px] text-black">Rp ${p.p.toLocaleString('id-ID')}</p><p class="text-[8px] opacity-40 text-black truncate">API: ${p.i.join(', ')}</p></div>`;
 });
-let u=document.getElementById('ulasan');u.innerHTML='';ULASAN.forEach(x=>{u.innerHTML+=`<div class="bg-[#f5f5f0] border-2 border-black rounded-[16px] p-3"><b class="text-[11px]">${x.name}</b> <span class="bg-[#FFD700] border px-2 rounded-full text-[9px]">★${x.star}</span><p class="text-[11px] mt-1">"${x.text}"</p></div>`});
 }
-function openP(i){sel=PRODUCTS[i];mName.innerText=sel.n;mPrice.innerText='Rp '+sel.p.toLocaleString('id-ID');mSold.innerText=sel.sold;mRate.innerText=sel.r;mSisa.innerText=Object.values(sel.s).reduce((a,b)=>a+b,0);mImg.src=sel.i[0];let ms=document.getElementById('mSize');ms.innerHTML='';Object.entries(sel.s).forEach(([k,v])=>{if(v>0)ms.innerHTML+=`<button id="sz_${k}" onclick="pick('${k}')" class="border-2 border-black rounded-full py-2 text-[11px] font-black">${k} (${v})</button>`;else ms.innerHTML+=`<button disabled class="border rounded-full py-2 text-[11px] opacity-30">${k} HABIS</button>`;});modal.classList.remove('hidden');}
-function pick(s){selSize=s;document.querySelectorAll('#mSize button').forEach(b=>{if(b.id&&b.id.startsWith('sz_'))b.className='border-2 border-black rounded-full py-2 text-[11px] font-black bg-white';});let a=document.getElementById('sz_'+s);if(a)a.className='bg-black text-white border-2 border-black rounded-full py-2 text-[11px] font-black';}
-function addCart(){if(!selSize){alert('Pilih size dulu!');return;}cart.push({n:sel.n,s:selSize,p:sel.p});cartC.innerText=cart.length;modal.classList.add('hidden');}
-function openCart(){let el=document.getElementById('cartI');el.innerHTML='';let tot=0;cart.forEach((c,i)=>{tot+=c.p;el.innerHTML+=`<div class="flex justify-between border rounded-full px-3 py-2 text-[11px]"><span>${c.n} ${c.s}</span><button onclick="cart.splice(${i},1);cartC.innerText=cart.length;openCart()" class="text-red-500">✕</button></div>`;});cTotal.innerText='TOTAL Rp '+tot.toLocaleString('id-ID');cartM.classList.remove('hidden');}
-function checkout(){let nm=cName.value.trim(),wa=cWA.value.trim();if(!nm||!wa){alert('Isi nama WA');return;}let tot=cart.reduce((a,b)=>a+b.p,0);let txt=`ORDER ${nm} - Rp ${tot.toLocaleString('id-ID')} - ${cart.map(c=>c.n+' '+c.s).join(', ')}`;window.open('https://wa.me/62881023595180?text='+encodeURIComponent(txt),'_blank');cart=[];cartC.innerText='0';cartM.classList.add('hidden');}
-render();
+
+function renderUlasan(){let el=document.getElementById('ulasanList');el.innerHTML='';ulasanData.forEach(u=>{el.innerHTML+=`<div class="bg-[#f5f5f0] border-2 border-black rounded-[16px] p-4"><div class="flex justify-between items-center"><span class="font-black text-[11px] text-black">${u.name}</span><span class="bg-[#FFD700] border-2 border-black px-2 py-0.5 rounded-full text-[9px] font-black text-black">★${u.star}</span></div><p class="text-[11px] mt-2 text-black">"${u.text}"</p><p class="text-[9px] opacity-50 text-black mt-1">${u.prod||''}</p></div>`;});}
+
+function openP(i){sel=products[i];document.getElementById('modalName').innerText=sel.n;document.getElementById('modalPrice').innerText='Rp '+sel.p.toLocaleString('id-ID');document.getElementById('modalTerjual').innerText=sel.sold;document.getElementById('modalRating').innerText=sel.r;document.getElementById('modalSisa').innerText=Object.values(sel.s).reduce((a,b)=>a+b,0);document.getElementById('modalFiles').innerText='FILE: '+sel.i.join(', ');document.getElementById('modalImg').src=sel.i[0];let th=document.getElementById('modalThumbs');th.innerHTML='';sel.i.forEach(im=>{th.innerHTML+=`<div class="w-[52px] h-[52px] rounded-[10px] overflow-hidden border-2 border-black cursor-pointer" onclick="modalImg.src='${im}'"><img src="${im}" class="w-full h-full object-cover"></div>`;});let sb=document.getElementById('sizeBtns');sb.innerHTML='';Object.entries(sel.s).forEach(([sz,q])=>{if(q>0)sb.innerHTML+=`<button id="size_${sz}" onclick="selectSize('${sz}')" class="border-2 border-black rounded-full py-2.5 text-[11px] font-black bg-white text-black hover:bg-black hover:text-white">${sz} (${q})</button>`;else sb.innerHTML+=`<button disabled class="border rounded-full py-2.5 text-[11px] opacity-30">${sz} HABIS</button>`;});document.getElementById('productModal').classList.remove('hidden');}
+function selectSize(sz){selSize=sz;document.querySelectorAll('#sizeBtns button').forEach(b=>{if(b.id&&b.id.startsWith('size_'))b.className='border-2 border-black rounded-full py-2.5 text-[11px] font-black bg-white text-black';});let a=document.getElementById('size_'+sz);if(a)a.className='bg-black text-white border-2 border-black rounded-full py-2.5 text-[11px] font-black scale-110';}
+function closeModal(){document.getElementById('productModal').classList.add('hidden');}
+function addToCart(){if(!selSize){alert('Pilih size dulu!');return;}cart.push({n:sel.n,s:selSize,p:sel.p});localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart();closeModal();}
+function updateCart(){document.getElementById('cartCountHead').innerText=cart.length;let el=document.getElementById('cartItems');el.innerHTML='';let tot=0;cart.forEach((c,i)=>{tot+=c.p;el.innerHTML+=`<div class="flex justify-between border-2 border-black rounded-full px-3 py-2 text-[11px] bg-[#f5f5f0]"><span class="font-bold">${c.n} ${c.s} - Rp ${c.p.toLocaleString('id-ID')}</span><button onclick="cart.splice(${i},1);localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart()" class="text-red-500 font-black">✕</button></div>`;});let selO=document.getElementById('custOngkir');selO.innerHTML='';ongkir.forEach(o=>{selO.innerHTML+=`<option value="${o.p}">${o.n} - Rp ${o.p.toLocaleString('id-ID')}</option>`;});let ong=parseInt(selO.value)||10000;document.getElementById('checkoutTotal').innerText='TOTAL: Rp '+(tot+ong).toLocaleString('id-ID');}
+function openCart(){updateCart();document.getElementById('cartModal').classList.remove('hidden');}
+function closeCart(){document.getElementById('cartModal').classList.add('hidden');}
+document.getElementById('buktiFile')?.addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{buktiBase64=ev.target.result;document.getElementById('previewBukti').classList.remove('hidden');document.getElementById('imgPreview').src=buktiBase64;};r.readAsDataURL(f);});
+function secureCheckout(){let nm=document.getElementById('custName').value.trim(),wa=document.getElementById('custWA').value.trim(),ong=document.getElementById('custOngkir').value;if(!nm||!wa)return alert('Isi nama & WA!');if(!buktiBase64)return alert('Upload bukti transfer dulu! Anti palsu bos!');let orderId='GRGS-'+Date.now().toString().slice(-6);let totProd=cart.reduce((a,b)=>a+b.p,0);let total=totProd+parseInt(ong);let orders=JSON.parse(localStorage.getItem('GRGS_ORDERS')||'[]');orders.push({orderId,date:new Date().toISOString(),name:nm,wa:wa,items:cart,total:total,bukti:buktiBase64,status:"PENDING"});localStorage.setItem('GRGS_ORDERS',JSON.stringify(orders));window.open(`https://wa.me/${(cfg.wa||'0881023595180').replace(/[^0-9]/g,'')}?text=ORDER%20${orderId}%20Total%20Rp%20${total.toLocaleString('id-ID')}%20-%20${cart.map(c=>c.n+' '+c.s).join(', ')}`,'_blank');cart=[];localStorage.setItem('GRGS_CART',JSON.stringify(cart));closeCart();alert('Order '+orderId+' masuk! Cek admin!');}
+
+loadCfg();renderProducts();renderUlasan();updateCart();
 </script>
-</body>
-</html>
+</body></html>
