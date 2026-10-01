@@ -1,41 +1,134 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GREGARIOUS CLUB® - UNITED AS ONE</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600;900&display=swap" rel="stylesheet"><style>*{font-family:'Inter',sans-serif}h1,h2{font-family:'Space Grotesk',sans-serif}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.marquee{animation:marquee 18s linear infinite;display:flex;white-space:nowrap}</style></head><body class="bg-[#f5f5f0]">
-<div class="bg-black text-white py-2 overflow-hidden"><div class="marquee"><span id="marqueeText" class="text-[11px] font-black tracking-widest px-4">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • FOREVER YOUNG • BANDUNG 40614 • </span><span class="text-[11px] font-black tracking-widest px-4">★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • FOREVER YOUNG • BANDUNG 40614 • </span></div></div>
-<section class="max-w-[1200px] mx-auto p-3 grid md:grid-cols-[1.7fr_0.9fr] gap-4 mt-3"><div class="rounded-[24px] overflow-hidden bg-black h-[500px] relative"><img id="heroImgEl" src="hero.jpg" class="w-full h-full object-cover opacity-90"><div class="absolute top-4 left-4 bg-white text-black px-3 py-1 rounded-full text-[9px] font-black">We're a community.</div><div class="absolute bottom-4 left-4 right-4 flex justify-between"><div class="bg-white px-3 py-1.5 rounded-full text-[9px] font-black">EST. 2023 • BANDUNG</div><div class="bg-[#FFD700] border-2 border-black px-3 py-1.5 rounded-full text-[9px] font-black">★ 4.9/5 RATING</div></div></div><div class="bg-white rounded-[24px] border-2 border-black p-6 flex flex-col justify-between"><div><p id="heroSubEl" class="text-[10px] font-black tracking-[0.2em] opacity-60">GREGARIOUS CLUB • FOREVER YOUNG</p><h1 class="text-[42px] font-black leading-[0.9] mt-3"><span id="heroTitle1El">UNITED</span><br><span id="heroTitle2El" class="bg-[#FFD700] px-2">AS ONE</span></h1><p id="heroDescEl" class="text-[12px] leading-[1.5] mt-4 opacity-70">Koleksi eksklusif stok terbatas. File asli cross_black.jpg + richbefore_wp_front.jpg + richbefore_wp_back.jpg. Slide depan-belakang otomatis.</p><button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" id="heroBtnEl" class="bg-black text-white px-6 py-3 rounded-full font-black text-[12px] mt-6 w-fit hover:bg-[#FFD700] hover:text-black border-2 border-black transition">SHOP NOW →</button></div><div class="grid grid-cols-3 gap-2 mt-6"><div class="border-2 border-black rounded-[16px] p-3 text-center"><p id="stat1NumEl" class="font-black text-[18px]">1000+</p><p id="stat1LabelEl" class="text-[9px] font-bold">TERJUAL</p></div><div class="bg-[#FFD700] border-2 border-black rounded-[16px] p-3 text-center"><p id="stat2NumEl" class="font-black text-[18px]">4.9/5</p><p id="stat2LabelEl" class="text-[9px] font-bold">RATING</p></div><div class="border-2 border-black rounded-[16px] p-3 text-center"><p id="stat3NumEl" class="font-black text-[18px]">500+</p><p id="stat3LabelEl" class="text-[9px] font-bold">CUSTOMER</p></div></div></div></section>
-<section id="shop" class="max-w-[1200px] mx-auto p-3 mt-6"><div class="flex justify-between items-end"><div><h2 id="shopTitleEl" class="text-[28px] font-black tracking-tight">SHOP COLLECTION</h2><p id="shopSubEl" class="text-[11px] opacity-60 mt-1">10 PRODUK • SLIDE DEPAN-BELAKANG • FILE ASLI GITHUB • STOK REAL-TIME</p></div><div class="text-right hidden md:block"><p class="text-[12px] font-black">★<span id="ratingEl">4.9</span>/5 RATING</p><p class="text-[10px] opacity-60"><span id="ulasanEl">558</span>+ Ulasan • <span id="terjualEl">500</span>+ Terjual • Bandung 40614</p></div></div><div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5"></div></section>
-<section class="max-w-[1200px] mx-auto p-3 mt-8"><div class="bg-black text-white rounded-[24px] p-6 md:p-8 flex flex-col md:flex-row justify-between"><div><h2 id="aboutTitleEl" class="text-[24px] font-black">UNITED AS ONE - GREGARIOUS CLUB</h2><p id="aboutDescEl" class="text-[12px] opacity-70 mt-2 max-w-[500px]">Brand lokal Bandung 40614. Forever young. United as one. Koleksi terbatas, stok real-time S M L XL.</p><p id="marqueeBottomEl" class="text-[10px] opacity-40 mt-3 tracking-widest">GREGARIOUS CLUB • BANDUNG 40614 • FOREVER YOUNG</p></div><div class="mt-4 md:mt-0 flex gap-2"><div class="bg-white text-black px-4 py-2 rounded-full text-[11px] font-black">★<span id="ratingEl2">4.9</span>/5</div><div class="bg-[#FFD700] text-black border-2 border-white px-4 py-2 rounded-full text-[11px] font-black"><span id="totalUlasanEl">558</span>+ ULASAN</div></div></div></section>
-<div id="cartBtn" class="fixed bottom-4 right-4 bg-black text-white px-6 py-3 rounded-full font-black text-[12px] shadow-2xl cursor-pointer hidden border-2 border-white" onclick="openCart()">🛒 CART (<span id="cartCount">0</span>)</div>
-<div id="productModal" class="fixed inset-0 bg-black/80 hidden z-50 p-3 flex items-center justify-center"><div class="bg-white rounded-[24px] max-w-[900px] w-full max-h-[90vh] overflow-auto p-5 border-2 border-black"><div class="flex justify-between items-center"><h3 id="modalName" class="font-black text-[16px]"></h3><button onclick="closeModal()" class="bg-black text-white w-8 h-8 rounded-full text-[12px]">✕</button></div><div class="grid md:grid-cols-2 gap-5 mt-4"><div><div class="rounded-[16px] overflow-hidden border-2 border-black h-[400px] bg-[#f5f5f0]"><img id="modalImg" src="" class="w-full h-full object-cover"></div><div id="modalThumbs" class="flex gap-2 mt-3"></div><p class="text-[10px] opacity-60 mt-3">File: <span id="modalFiles"></span> • ★<span id="modalRating"></span> • SISA: <span id="modalSisa" class="font-black"></span></p></div><div><p id="modalPrice" class="text-[28px] font-black"></p><div id="modalStock" class="grid grid-cols-4 gap-2 mt-4"></div><div id="sizeBtns" class="grid grid-cols-4 gap-2 mt-3"></div><div class="flex gap-2 mt-6"><button onclick="addToCart()" class="flex-1 bg-black text-white py-3.5 rounded-full font-black text-[12px] border-2 border-black">+ KERANJANG</button><button onclick="buyNow()" class="flex-1 bg-[#FFD700] border-2 border-black py-3.5 rounded-full font-black text-[12px]">BELI LANGSUNG</button></div><div class="mt-4 bg-[#f5f5f0] p-3 rounded-[12px] border"><p class="text-[10px] font-bold">📦 ONGKIR:</p><div id="modalOngkir" class="text-[10px] mt-1 space-y-1"></div></div></div></div></div></div>
-<div id="cartModal" class="fixed inset-0 bg-black/80 hidden z-50 p-3 flex items-center justify-center"><div class="bg-white rounded-[24px] max-w-[500px] w-full p-5 border-2 border-black max-h-[90vh] overflow-auto"><div class="flex justify-between"><h3 class="font-black text-[16px]">KERANJANG</h3><button onclick="closeCart()" class="bg-black text-white w-8 h-8 rounded-full text-[12px]">✕</button></div><div id="cartItems" class="mt-4 space-y-2"></div><div class="mt-5 border-t-2 border-black pt-4"><input id="custName" placeholder="Nama lengkap" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] font-bold"><input id="custWA" placeholder="WA 08xxx" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] mt-2"><select id="custOngkir" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] mt-2 bg-white font-bold"></select><div class="grid grid-cols-2 gap-2 mt-4"><button onclick="checkout('BRI')" class="bg-black text-white py-3.5 rounded-full font-black text-[11px]">BAYAR BRI</button><button onclick="checkout('SEABANK')" class="bg-[#FFD700] border-2 border-black py-3.5 rounded-full font-black text-[11px]">BAYAR SEABANK</button></div><p id="checkoutTotal" class="font-black text-center mt-3 text-[14px]"></p></div></div></div>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GREGARIOUS CLUB® SECURE</title><script src="https://cdn.tailwindcss.com"></script><style>.font-bebas{font-family:Impact,sans-serif}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.marquee{animation:marquee 20s linear infinite;display:flex;white-space:nowrap}</style></head><body class="bg-black text-white">
+<header class="bg-white text-black sticky top-0 z-40 flex justify-between items-center px-4 py-3"><button>☰</button><div class="border-2 border-black rounded-[50%] px-5 py-1.5 font-black text-[14px]" id="headerLogo">GRGS</div><button onclick="openCart()">🛒<span id="cartCountHead" class="text-[10px] bg-black text-white rounded-full px-1.5 ml-1">0</span></button></header>
+<div class="bg-black text-white py-1.5 overflow-hidden border-y border-white/10"><div class="marquee"><span id="marqueeText" class="text-[10px] font-bold tracking-widest px-3">🔒 PEMBAYARAN AMAN • WAJIB UPLOAD BUKTI • ANTI PEMALSUAN • ★4.9/5 (558+ ULASAN) • </span><span class="text-[10px] font-bold tracking-widest px-3">🔒 PEMBAYARAN AMAN • WAJIB UPLOAD BUKTI • ANTI PEMALSUAN • ★4.9/5 (558+ ULASAN) • </span></div></div>
+<section class="relative h-[85vh] flex items-center justify-center overflow-hidden"><img id="heroImgEl" src="hero.jpg" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-black/60"></div><div class="relative z-10 text-center px-6"><div class="mx-auto border-2 border-white rounded-[50%] px-6 py-2 font-black text-[18px] w-fit" id="heroLogoEl">GRGS</div><p id="brandEl" class="text-[12px] tracking-[0.3em] mt-6 font-bold">GREGARIOUS CLUB</p><p id="taglineEl" class="text-[12px] mt-2 opacity-80"><i>We're not just a brand.<br>We're a community.</i></p><h1 class="font-bebas text-[64px] leading-[0.9] mt-6"><span id="heroTitle1El">UNITED</span><br><span id="heroTitle2El">AS ONE</span></h1><div class="mt-5"><span id="priceBadgeEl" class="bg-white text-black px-6 py-1.5 font-black text-[12px]">Rp 145.000</span></div><button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" id="heroBtnEl" class="mt-6 border-2 border-white rounded-full px-10 py-3 text-[13px] font-bold">SHOP NOW</button></div></section>
+<section id="shop" class="bg-[#f5f5f0] text-black p-4"><div class="max-w-[1200px] mx-auto"><h2 id="shopTitleEl" class="font-black text-[20px]">SHOP COLLECTION</h2><div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4"></div></div></section>
+
+<!-- MODAL PRODUK -->
+<div id="productModal" class="fixed inset-0 bg-black/90 hidden z-50 p-3 flex items-center justify-center"><div class="bg-white text-black rounded-[24px] max-w-[500px] w-full p-4"><div class="flex justify-between"><h3 id="modalName" class="font-black"></h3><button onclick="closeModal()" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div><img id="modalImg" class="w-full h-[300px] object-cover rounded-[16px] mt-3 border-2 border-black"><p id="modalPrice" class="font-black text-[20px] mt-3"></p><div id="sizeBtns" class="grid grid-cols-4 gap-2 mt-3"></div><button onclick="addToCart()" class="w-full bg-black text-white py-3 rounded-full font-black mt-3">+ KERANJANG</button></div></div>
+
+<!-- CART + PEMBAYARAN KETAT -->
+<div id="cartModal" class="fixed inset-0 bg-black/95 hidden z-[60] p-2 flex items-center justify-center"><div class="bg-white text-black rounded-[24px] max-w-[480px] w-full p-5 max-h-[95vh] overflow-auto border-2 border-black">
+<div class="flex justify-between items-center"><h3 class="font-black text-[16px]">🔒 PEMBAYARAN KETAT</h3><button onclick="closeCart()" class="bg-black text-white w-8 h-8 rounded-full">✕</button></div>
+
+<div id="cartItems" class="mt-3 space-y-2"></div>
+
+<div class="mt-4 bg-[#FFD700] border-2 border-black p-3 rounded-[16px]"><p class="font-black text-[11px]">💳 TRANSFER KE (PILIH SALAH SATU):</p><div class="mt-2 space-y-1 text-[11px] font-mono"><div class="flex justify-between bg-white border-2 border-black rounded-full px-3 py-2"><span>BRI - <span id="briNum">074901024253504</span></span><span id="briName" class="font-bold">RIZAL FARUK</span></div><div class="flex justify-between bg-white border-2 border-black rounded-full px-3 py-2"><span>SEABANK - <span id="seabankNum">901100694312</span></span><span id="seabankName" class="font-bold">RIZAL FARUK</span></div></div><p class="text-[9px] mt-2 font-bold">⚠️ WAJIB TRANSFER SESUAI TOTAL + ONGKIR! BEDA NOMINAL = AUTO REJECT!</p></div>
+
+<div class="mt-4 space-y-2">
+<input id="custName" placeholder="Nama Lengkap (sesuai KTP)" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] font-bold">
+<input id="custWA" placeholder="WA Aktif 08xxx" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px]">
+<input id="custAlamat" placeholder="Alamat Lengkap + Kecamatan" class="w-full border-2 border-black rounded-[16px] px-4 py-3 text-[12px]">
+<select id="custOngkir" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] bg-white font-bold"></select>
+<select id="payMethod" class="w-full border-2 border-black rounded-full px-4 py-3 text-[12px] bg-white font-black"><option value="">-- PILIH METODE BAYAR --</option><option value="BRI">BRI - 074901024253504</option><option value="SEABANK">SEABANK - 901100694312</option></select>
+
+<div class="bg-black text-white p-3 rounded-[16px]"><p class="text-[10px] font-black">📸 UPLOAD BUKTI TRANSFER (WAJIB!):</p><input type="file" id="buktiFile" accept="image/*" class="w-full mt-2 text-[11px]"><div id="previewBukti" class="mt-2 hidden"><img id="imgPreview" class="w-full h-[150px] object-cover rounded-[12px] border-2 border-[#FFD700]"><p id="fileInfo" class="text-[9px] mt-1 opacity-70"></p></div><p class="text-[8px] opacity-60 mt-2">• Foto harus jelas • Nama pengirim terlihat • Nominal terlihat • Max 5MB • Format JPG/PNG</p></div>
+
+<div class="flex items-center gap-2 mt-3"><input type="checkbox" id="agreeCheck" class="w-4 h-4"><label for="agreeCheck" class="text-[9px] font-bold">Saya sudah transfer SESUAI TOTAL dan bukti yang diupload ASLI, bukan palsu/edit. Jika palsu, order auto banned.</label></div>
+
+<p id="checkoutTotal" class="font-black text-center mt-3 text-[16px] bg-black text-white py-2 rounded-full"></p>
+
+<button onclick="secureCheckout()" id="btnCheckout" class="w-full bg-[#FFD700] border-2 border-black py-4 rounded-full font-black text-[13px] mt-3 disabled:bg-gray-300 disabled:text-gray-500">🔒 KIRIM BUKTI & CHECKOUT</button>
+<p class="text-[8px] text-center opacity-60 mt-2">Order ID akan dibuat otomatis. Admin akan verifikasi max 2 jam.</p>
+</div>
+</div></div>
+
 <script>
 let defaults=[
-{id:"CROSS_BLACK",n:"CROSS TSHIRT - BLACK",p:145000,i:["cross_black.jpg"],s:{S:2,M:3,L:2,XL:1},sold:120,init:150,r:4.9},
-{id:"CROSS_WHITE",n:"CROSS TSHIRT - WHITE",p:145000,i:["cross_white.jpg"],s:{S:2,M:3,L:2,XL:1},sold:98,init:120,r:4.8},
-{id:"BABY_BLACK",n:"BABYTEE - BLACK",p:135000,i:["babytee_black.jpg"],s:{S:5,M:5,L:5,XL:2},sold:75,init:100,r:4.9},
-{id:"BABY_WHITE",n:"BABYTEE - WHITE",p:135000,i:["babytee_white.jpg"],s:{S:5,M:5,L:5,XL:2},sold:68,init:100,r:4.9},
-{id:"RICH_WP_NEW",n:"RICH BEFORE - WHITE PINK (NEW)",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:5,M:5,L:5,XL:5},sold:12,init:50,r:5.0},
-{id:"RICH_WG",n:"RICH BEFORE - WHITE GREY",p:155000,i:["richbefore_wg_front.jpg","richbefore_wg_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
-{id:"RICH_BG",n:"RICH BEFORE - BLACK GREY",p:155000,i:["richbefore_bg_front.jpg","richbefore_bg_back.jpg"],s:{S:2,M:3,L:2,XL:1},sold:45,init:50,r:4.8},
-{id:"RICH_BP",n:"RICH BEFORE - BLACK PINK",p:155000,i:["richbefore_bp_front.jpg","richbefore_bp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
-{id:"RICH_WP_OLD",n:"RICH BEFORE - WHITE PINK",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,init:50,r:4.9},
-{id:"FL_WHITE",n:"FUCKLOVE - WHITE",p:145000,i:["fucklove_white_front.jpg"],s:{S:3,M:3,L:3,XL:2},sold:40,init:60,r:4.9}
+{id:"CROSS_BLACK",n:"CROSS TSHIRT - BLACK",p:145000,i:["cross_black.jpg"],s:{S:2,M:3,L:2,XL:1},sold:120,r:4.9},
+{id:"CROSS_WHITE",n:"CROSS TSHIRT - WHITE",p:145000,i:["cross_white.jpg"],s:{S:2,M:3,L:2,XL:1},sold:98,r:4.8},
+{id:"BABY_BLACK",n:"BABYTEE - BLACK",p:135000,i:["babytee_black.jpg"],s:{S:5,M:5,L:5,XL:2},sold:75,r:4.9},
+{id:"BABY_WHITE",n:"BABYTEE - WHITE",p:135000,i:["babytee_white.jpg"],s:{S:5,M:5,L:5,XL:2},sold:68,r:4.9},
+{id:"RICH_WP_NEW",n:"RICH BEFORE - WHITE PINK (NEW)",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:5,M:5,L:5,XL:5},sold:12,r:5.0},
+{id:"RICH_WG",n:"RICH BEFORE - WHITE GREY",p:155000,i:["richbefore_wg_front.jpg","richbefore_wg_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
+{id:"RICH_BG",n:"RICH BEFORE - BLACK GREY",p:155000,i:["richbefore_bg_front.jpg","richbefore_bg_back.jpg"],s:{S:2,M:3,L:2,XL:1},sold:45,r:4.8},
+{id:"RICH_BP",n:"RICH BEFORE - BLACK PINK",p:155000,i:["richbefore_bp_front.jpg","richbefore_bp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
+{id:"RICH_WP_OLD",n:"RICH BEFORE - WHITE PINK",p:155000,i:["richbefore_wp_front.jpg","richbefore_wp_back.jpg"],s:{S:0,M:0,L:0,XL:0},sold:50,r:4.9},
+{id:"FL_WHITE",n:"FUCKLOVE - WHITE",p:145000,i:["fucklove_white_front.jpg"],s:{S:3,M:3,L:3,XL:2},sold:40,r:4.9}
 ];
-let defaultOngkir=[{n:"BANDUNG - JNE OKE",p:10000},{n:"JABODETABEK - JNE REG",p:13000},{n:"JNE YES",p:18000},{n:"J&T REG",p:17000},{n:"J&T ECO",p:12000}];
-let products;try{products=JSON.parse(localStorage.getItem('GRGS_P'));if(!Array.isArray(products)||products.length===0)throw 1;}catch(e){products=JSON.parse(JSON.stringify(defaults));}
-let cfg;try{cfg=JSON.parse(localStorage.getItem('GRGS_CFG'));if(!cfg||!cfg.heroImg)throw 1;}catch(e){cfg={heroImg:"hero.jpg",marquee:"★★★★★ 4.9/5 (558+ ULASAN) • UNITED AS ONE • FOREVER YOUNG • BANDUNG 40614 •",heroTitle1:"UNITED",heroTitle2:"AS ONE",heroSub:"GREGARIOUS CLUB • FOREVER YOUNG",heroDesc:"Koleksi eksklusif stok terbatas. File asli cross_black.jpg + richbefore_wp_front.jpg. Slide depan-belakang otomatis.",heroButton:"SHOP NOW →",stat1Num:"1000+",stat1Label:"TERJUAL",stat2Num:"4.9/5",stat2Label:"RATING",stat3Num:"500+",stat3Label:"CUSTOMER",ratingAvg:"4.9",totalUlasan:"558",totalTerjual:"500",shopTitle:"SHOP COLLECTION",shopSub:"10 PRODUK • SLIDE DEPAN-BELAKANG • FILE ASLI GITHUB • STOK REAL-TIME",aboutTitle:"UNITED AS ONE - GREGARIOUS CLUB",aboutDesc:"Brand lokal Bandung 40614. Forever young. United as one.",marqueeBottom:"GREGARIOUS CLUB • BANDUNG 40614 • FOREVER YOUNG",bri:"074901024253504",namaBri:"RIZAL FARUK HAYDAR",seabank:"901100694312",namaSeabank:"RIZAL FARUK HAYDAR",wa:"0881023595180",waLabel:"Chat Admin"};}
+let defaultOngkir=[{n:"BANDUNG - JNE OKE",p:10000},{n:"JABODETABEK - JNE REG",p:13000},{n:"JNE YES",p:18000},{n:"J&T REG",p:17000}];
+let products;try{products=JSON.parse(localStorage.getItem('GRGS_P'));if(!Array.isArray(products)||products.length===0)throw 1;}catch(e){products=defaults;}
+let cfg;try{cfg=JSON.parse(localStorage.getItem('GRGS_CFG'));if(!cfg.heroImg)throw 1;}catch(e){cfg={headerLogo:"GRGS",heroLogo:"GRGS",brand:"GREGARIOUS CLUB",tagline:"We're not just a brand.\nWe're a community.",heroImg:"hero.jpg",heroTitle1:"UNITED",heroTitle2:"AS ONE",priceBadge:"Rp 145.000",heroButton:"SHOP NOW",bri:"074901024253504",namaBri:"RIZAL FARUK HAYDAR",seabank:"901100694312",namaSeabank:"RIZAL FARUK HAYDAR",wa:"0881023595180"};}
 let ongkir;try{ongkir=JSON.parse(localStorage.getItem('GRGS_ONGKIR'));if(!Array.isArray(ongkir))throw 1;}catch(e){ongkir=defaultOngkir;}
-let cart=JSON.parse(localStorage.getItem('GRGS_CART')||'[]');let sel=null,selSize=null,curImg=0;
-function loadCfg(){try{marqueeText.innerText=cfg.marquee+' '+cfg.marquee;heroImgEl.src=cfg.heroImg;heroTitle1El.innerText=cfg.heroTitle1;heroTitle2El.innerText=cfg.heroTitle2;heroSubEl.innerText=cfg.heroSub;heroDescEl.innerText=cfg.heroDesc;heroBtnEl.innerText=cfg.heroButton;stat1NumEl.innerText=cfg.stat1Num;stat1LabelEl.innerText=cfg.stat1Label;stat2NumEl.innerText=cfg.stat2Num;stat2LabelEl.innerText=cfg.stat2Label;stat3NumEl.innerText=cfg.stat3Num;stat3LabelEl.innerText=cfg.stat3Label;shopTitleEl.innerText=cfg.shopTitle;shopSubEl.innerText=cfg.shopSub;aboutTitleEl.innerText=cfg.aboutTitle;aboutDescEl.innerText=cfg.aboutDesc;marqueeBottomEl.innerText=cfg.marqueeBottom;ratingEl.innerText=cfg.ratingAvg;ratingEl2.innerText=cfg.ratingAvg;ulasanEl.innerText=cfg.totalUlasan;totalUlasanEl.innerText=cfg.totalUlasan;terjualEl.innerText=cfg.totalTerjual;}catch(e){}}
-function renderProducts(){let g=document.getElementById('productGrid');g.innerHTML='';products.forEach((p,i)=>{let total=Object.values(p.s).reduce((a,b)=>a+b,0);let habis=total===0;g.innerHTML+=`<div class="bg-white rounded-[16px] border-2 ${habis?'border-red-500 opacity-80':'border-black'} p-3 cursor-pointer hover:translate-y-[-2px] transition" onclick="openProduct(${i})"><div class="rounded-[12px] overflow-hidden h-[220px] bg-[#f5f5f0] relative border"><img src="${p.i[0]}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='cross_black.jpg'"><div class="absolute top-2 left-2 flex gap-1">${habis?`<span class="bg-red-600 text-white px-2.5 py-1 rounded-full text-[9px] font-black">HABIS</span>`:`<span class="bg-black text-white px-2.5 py-1 rounded-full text-[9px] font-black">SISA ${total}</span>`}<span class="bg-[#FFD700] border border-black px-2 py-1 rounded-full text-[9px] font-black">★${p.r}</span></div>${p.i[1]?`<div class="absolute top-2 right-2 bg-white border-2 border-black px-2 py-1 rounded-full text-[8px] font-black">2 FOTO</div>`:''}<div class="absolute bottom-2 left-2 bg-white/90 border px-2 py-1 rounded-full text-[8px] font-bold">TERJUAL ${p.sold}</div></div><h3 class="font-black text-[11px] mt-2.5 leading-tight">${p.n}</h3><p class="font-black text-[14px] mt-1">Rp ${p.p.toLocaleString('id-ID')}</p><p class="text-[9px] opacity-60 mt-1 truncate">${p.i.join(', ')}</p></div>`;});}
-function openProduct(i){sel=products[i];curImg=0;modalName.innerText=sel.n;modalPrice.innerText='Rp '+sel.p.toLocaleString('id-ID');modalFiles.innerText=sel.i.join(', ');modalRating.innerText=sel.r;modalSisa.innerText=Object.values(sel.s).reduce((a,b)=>a+b,0);modalImg.src=sel.i[0];let thumbs=document.getElementById('modalThumbs');thumbs.innerHTML='';sel.i.forEach((img,ix)=>{thumbs.innerHTML+=`<div class="w-[64px] h-[64px] rounded-[10px] overflow-hidden border-2 ${ix===0?'border-black':'border-transparent'} cursor-pointer" onclick="curImg=${ix};modalImg.src='${img}'"><img src="${img}" class="w-full h-full object-cover"></div>`;});let stockEl=document.getElementById('modalStock');stockEl.innerHTML='';Object.entries(sel.s).forEach(([sz,qty])=>{stockEl.innerHTML+=`<div class="border-2 rounded-full py-2 text-center text-[11px] font-bold ${qty===0?'bg-red-100 text-red-600 border-red-300':'border-black bg-white'}">${sz}: ${qty}</div>`;});let sizeEl=document.getElementById('sizeBtns');sizeEl.innerHTML='';Object.entries(sel.s).forEach(([sz,qty])=>{if(qty>0)sizeEl.innerHTML+=`<button onclick="selectSize('${sz}')" id="size_${sz}" class="border-2 border-black rounded-full py-2.5 text-[11px] font-black bg-white hover:bg-black hover:text-white">${sz}</button>`;});let ongEl=document.getElementById('modalOngkir');ongEl.innerHTML='';ongkir.slice(0,3).forEach(o=>{ongEl.innerHTML+=`<div>• ${o.n} - Rp ${o.p.toLocaleString('id-ID')}</div>`;});productModal.classList.remove('hidden');}
-function selectSize(sz){selSize=sz;document.querySelectorAll('#sizeBtns button').forEach(b=>b.className='border-2 border-black rounded-full py-2.5 text-[11px] font-black bg-white');document.getElementById('size_'+sz).className='bg-black text-white border-2 border-black rounded-full py-2.5 text-[11px] font-black';}
-function closeModal(){productModal.classList.add('hidden');selSize=null;}
-function addToCart(){if(!selSize){alert('Pilih size S/M/L/XL dulu bos!');return;}cart.push({id:sel.id,name:sel.n,size:selSize,price:sel.p,img:sel.i[0]});localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart();closeModal();alert('Masuk keranjang!');}
-function updateCart(){cartCount.innerText=cart.length;cartBtn.classList.toggle('hidden',cart.length===0);let el=document.getElementById('cartItems');el.innerHTML='';let total=0;cart.forEach((c,i)=>{total+=c.price;el.innerHTML+=`<div class="flex justify-between items-center border-2 border-black rounded-full px-4 py-2.5 text-[11px] bg-[#f5f5f0]"><span class="font-bold">${c.name} - ${c.size}</span><span class="flex items-center gap-2">Rp ${c.price.toLocaleString('id-ID')} <button onclick="cart.splice(${i},1);localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart()" class="bg-red-600 text-white w-6 h-6 rounded-full">✕</button></span></div>`;});let selOngkir=document.getElementById('custOngkir');if(selOngkir){selOngkir.innerHTML='';ongkir.forEach(o=>{selOngkir.innerHTML+=`<option value="${o.p}">${o.n} - Rp ${o.p.toLocaleString('id-ID')}</option>`;});}let ong=parseInt(document.getElementById('custOngkir')?.value||10000);document.getElementById('checkoutTotal').innerText='TOTAL: Rp '+(total+ong).toLocaleString('id-ID')+' (produk + ongkir)';}
+let cart=JSON.parse(localStorage.getItem('GRGS_CART')||'[]');let sel=null,selSize=null;let buktiBase64=null,buktiName=null;
+
+function loadCfg(){try{headerLogo.innerText=cfg.headerLogo;heroLogoEl.innerText=cfg.heroLogo;brandEl.innerText=cfg.brand;taglineEl.innerHTML=cfg.tagline.replace(/\n/g,'<br>');heroImgEl.src=cfg.heroImg;heroTitle1El.innerText=cfg.heroTitle1;heroTitle2El.innerText=cfg.heroTitle2;priceBadgeEl.innerText=cfg.priceBadge;heroBtnEl.innerText=cfg.heroButton;marqueeText.innerText="🔒 PEMBAYARAN AMAN • WAJIB UPLOAD BUKTI • ANTI PEMALSUAN • ★4.9/5 (558+ ULASAN) • "+(cfg.marquee||"");briNum.innerText=cfg.bri;briName.innerText=cfg.namaBri;seabankNum.innerText=cfg.seabank;seabankName.innerText=cfg.namaSeabank;}catch(e){}}
+function render(){let g=document.getElementById('productGrid');g.innerHTML='';products.forEach((p,i)=>{let tot=Object.values(p.s).reduce((a,b)=>a+b,0);g.innerHTML+=`<div class="bg-white rounded-[16px] border-2 ${tot===0?'border-red-500':'border-black'} p-2 cursor-pointer" onclick="openP(${i})"><div class="rounded-[12px] overflow-hidden h-[200px] relative"><img src="${p.i[0]}" class="w-full h-full object-cover"><div class="absolute top-2 left-2 ${tot===0?'bg-red-600':'bg-black'} text-white px-2 py-1 rounded-full text-[8px]">${tot===0?'HABIS':'SISA '+tot}</div></div><h3 class="font-black text-[10px] mt-2">${p.n}</h3><p class="font-black text-[12px]">Rp ${p.p.toLocaleString('id-ID')}</p></div>`;});}
+function openP(i){sel=products[i];modalName.innerText=sel.n;modalPrice.innerText='Rp '+sel.p.toLocaleString('id-ID');modalImg.src=sel.i[0];sizeBtns.innerHTML='';Object.entries(sel.s).forEach(([sz,q])=>{if(q>0)sizeBtns.innerHTML+=`<button onclick="selSize='${sz}'" class="border-2 border-black rounded-full py-2 text-[11px] font-black">${sz} (${q})</button>`;});productModal.classList.remove('hidden');}
+function closeModal(){productModal.classList.add('hidden');}
+function addToCart(){if(!selSize){alert('Pilih size!');return;}cart.push({n:sel.n,s:selSize,p:sel.p,id:sel.id});localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart();closeModal();}
+function updateCart(){document.getElementById('cartCountHead').innerText=cart.length;let el=document.getElementById('cartItems');el.innerHTML='';let total=0;cart.forEach((c,i)=>{total+=c.p;el.innerHTML+=`<div class="flex justify-between border-2 border-black rounded-full px-3 py-2 text-[11px] bg-[#f5f5f0]"><span>${c.n} ${c.s}</span><button onclick="cart.splice(${i},1);localStorage.setItem('GRGS_CART',JSON.stringify(cart));updateCart()" class="text-red-500 font-black">✕</button></div>`;});let selO=document.getElementById('custOngkir');selO.innerHTML='';ongkir.forEach(o=>{selO.innerHTML+=`<option value="${o.p}">${o.n} - Rp ${o.p.toLocaleString('id-ID')}</option>`;});selO.onchange=()=>{let ong=parseInt(selO.value)||0;document.getElementById('checkoutTotal').innerText='TOTAL BAYAR: Rp '+(total+ong).toLocaleString('id-ID');};let ong=parseInt(selO.value)||10000;document.getElementById('checkoutTotal').innerText='TOTAL BAYAR: Rp '+(total+ong).toLocaleString('id-ID');}
+
+// BUKTI UPLOAD HANDLER - ANTI PALSU
+document.getElementById('buktiFile')?.addEventListener('change',function(e){
+let file=e.target.files[0];if(!file)return;
+if(file.size>5*1024*1024){alert('File max 5MB bos!');return;}
+if(!file.type.includes('image')){alert('Harus foto JPG/PNG!');return;}
+let reader=new FileReader();reader.onload=function(ev){
+buktiBase64=ev.target.result;buktiName=file.name;
+document.getElementById('previewBukti').classList.remove('hidden');
+document.getElementById('imgPreview').src=buktiBase64;
+document.getElementById('fileInfo').innerText=file.name+' • '+(file.size/1024).toFixed(0)+'KB • '+new Date().toLocaleString();
+};reader.readAsDataURL(file);
+});
+
 function openCart(){updateCart();cartModal.classList.remove('hidden');}
 function closeCart(){cartModal.classList.add('hidden');}
-function buyNow(){if(!selSize){alert('Pilih size dulu!');return;}cart=[{id:sel.id,name:sel.n,size:selSize,price:sel.p,img:sel.i[0]}];localStorage.setItem('GRGS_CART',JSON.stringify(cart));closeModal();openCart();}
-function checkout(method){let name=document.getElementById('custName').value.trim();let wa=document.getElementById('custWA').value.trim();let ongkirVal=document.getElementById('custOngkir').value;if(!name||!wa){alert('Isi nama & WA bos!');return;}let totalProd=cart.reduce((a,b)=>a+b.price,0);let total=totalProd+parseInt(ongkirVal);let bri=cfg.bri||'074901024253504';let seabank=cfg.seabank||'901100694312';let namaBri=cfg.namaBri||'RIZAL FARUK HAYDAR';let waToko=cfg.wa||'0881023595180';let msg=`Halo GREGARIOUS CLUB!%0AOrder:%0A${cart.map(c=>`- ${c.name} Size ${c.size} Rp ${c.price.toLocaleString('id-ID')}`).join('%0A')}%0AONGKIR: Rp ${parseInt(ongkirVal).toLocaleString('id-ID')}%0ATOTAL: Rp ${total.toLocaleString('id-ID')}%0ANama: ${name}%0AWA: ${wa}%0ABayar: ${method} ${method==='BRI'?bri:seabank} a.n ${namaBri}`;window.open(`https://wa.me/${waToko.replace(/[^0-9]/g,'')}?text=${msg}`,'_blank');}
-document.getElementById('custOngkir')?.addEventListener('change',updateCart);
-loadCfg();renderProducts();updateCart();
+
+function secureCheckout(){
+let name=document.getElementById('custName').value.trim();
+let wa=document.getElementById('custWA').value.trim();
+let alamat=document.getElementById('custAlamat').value.trim();
+let ongkirVal=document.getElementById('custOngkir').value;
+let method=document.getElementById('payMethod').value;
+let agree=document.getElementById('agreeCheck').checked;
+
+if(!name||!wa||!alamat){alert('❌ Isi Nama + WA + Alamat lengkap bos!');return;}
+if(!method){alert('❌ Pilih metode BRI / SEABANK!');return;}
+if(!buktiBase64){alert('❌ WAJIB UPLOAD BUKTI TRANSFER! Ga ada bukti = ga diproses!');return;}
+if(!agree){alert('❌ Centang persetujuan bukti asli!');return;}
+if(cart.length===0){alert('Keranjang kosong!');return;}
+
+// CEK DUPLIKAT BUKTI (ANTI PAKAI BUKTI ORANG LAIN / BUKTI LAMA)
+let orders=JSON.parse(localStorage.getItem('GRGS_ORDERS')||'[]');
+let duplicate=orders.some(o=>o.buktiName===buktiName && o.buktiSize===document.getElementById('buktiFile').files[0].size);
+if(duplicate){alert('❌ BUKTI INI SUDAH PERNAH DIPAKAI! Upload bukti baru, jangan pakai bukti lama / bukti orang lain!');return;}
+
+let orderId='GRGS-'+Date.now().toString().slice(-6)+'-'+Math.random().toString(36).substr(2,3).toUpperCase();
+let totalProd=cart.reduce((a,b)=>a+b.p,0);
+let total=totalProd+parseInt(ongkirVal);
+
+let orderData={
+orderId:orderId,
+date:new Date().toISOString(),
+name:name,wa:wa,alamat:alamat,
+items:JSON.parse(JSON.stringify(cart)),
+ongkir:parseInt(ongkirVal),
+ongkirName:document.getElementById('custOngkir').options[document.getElementById('custOngkir').selectedIndex].text,
+method:method,
+total:total,
+bukti:buktiBase64,
+buktiName:buktiName,
+buktiSize:document.getElementById('buktiFile').files[0].size,
+status:"PENDING_VERIFIKASI",
+ip:Date.now()
+};
+
+orders.push(orderData);
+localStorage.setItem('GRGS_ORDERS',JSON.stringify(orders));
+
+// KIRIM KE WA ADMIN DENGAN FORMAT KETAT
+let waToko=(cfg.wa||'0881023595180').replace(/[^0-9]/g,'');
+let msg=`🔒 ORDER BARU - PERLU VERIFIKASI BUKTI%0A%0A🆔 Order ID: ${orderId}%0A📅 ${new Date().toLocaleString('id-ID')}%0A👤 Nama: ${name}%0A📱 WA: ${wa}%0A🏠 Alamat: ${alamat}%0A%0A📦 Produk:%0A${cart.map(c=>`- ${c.n} Size ${c.s} Rp ${c.p.toLocaleString('id-ID')}`).join('%0A')}%0A%0A🚚 Ongkir: ${document.getElementById('custOngkir').options[document.getElementById('custOngkir').selectedIndex].text}%0A💰 TOTAL: Rp ${total.toLocaleString('id-ID')}%0A💳 Metode: ${method} - ${method==='BRI'?cfg.bri:cfg.seabank}%0A%0A📸 BUKTI: ${buktiName} (${(document.getElementById('buktiFile').files[0].size/1024).toFixed(0)}KB)%0A⚠️ CEK DI ADMIN: gregarious-web.vercel.app/admin.html%0A%0A_Jika bukti palsu / nominal beda, REJECT!_`;
+
+window.open(`https://wa.me/${waToko}?text=${msg}`,'_blank');
+
+// CLEAR CART
+cart=[];localStorage.setItem('GRGS_CART',JSON.stringify(cart));buktiBase64=null;closeCart();
+alert('✅ ORDER '+orderId+' BERHASIL! Bukti terkirim. Admin akan verifikasi max 2 jam. Jangan hapus bukti asli di HP lu!');
+location.reload();
+}
+
+loadCfg();render();updateCart();
 </script>
 </body></html>
